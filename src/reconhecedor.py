@@ -46,10 +46,11 @@ class ThreadedCamera:
 
 class ReconhecedorAssincrono:
     """Gerencia a inferência biométrica com amortecimento temporal (histerese) e limiar calibrado."""
-    def __init__(self, encodings_conhecidos, nomes_conhecidos, limiar=0.58):
+    def __init__(self, encodings_conhecidos, nomes_conhecidos, limiar=0.58, calibrar=False):
         self.encodings_conhecidos = encodings_conhecidos
         self.nomes_conhecidos = nomes_conhecidos
         self.limiar = limiar
+        self.calibrar = calibrar  # Modo calibração: mostra a distância de cada leitura no terminal
         self.processando = False
 
         # Estado confirmado exibido no HUD
@@ -63,9 +64,11 @@ class ReconhecedorAssincrono:
         self.contagem_consistencia = 0
         self.LIMIAR_CONGRUENCIA = 2  # Exige pelo menos 2 leituras idênticas para comutar de estado
 
-        self.ultimo_evento_disparado = None
-        self.tempo_ultimo_evento = 0.0
-        self.INTERVALO_COOLDOWN = 3.0  # Intervalo mínimo (segundos) entre dois eventos seguidos
+        # Regras do registro: um evento por chegada e carência por pessoa
+        self.ultimo_evento_disparado = None  # Quem está diante da câmera desde o último evento
+        self.ultimo_registro = {}            # {nome: horário do último registro no log}
+        self.CARENCIA_AUTORIZADO = 300.0     # 5 min: a mesma pessoa não é registrada de novo antes disso
+        self.CARENCIA_DESCONHECIDO = 30.0    # Curta: todos os estranhos compartilham o nome "DESCONHECIDO"
 
     def solicitar_identificacao(self, rgb_frame, local_face):
         if self.processando:
@@ -91,6 +94,7 @@ class ReconhecedorAssincrono:
                     nome_instantaneo = "DESCONHECIDO"
                     autorizado_instantaneo = False
                     confianca_instantanea = 0.0
+                    dist = 1.0
 
                     if len(distancias) > 0:
                         melhor_indice = distancias.argmin()
@@ -100,6 +104,11 @@ class ReconhecedorAssincrono:
                         if correspondencias[melhor_indice]:
                             nome_instantaneo = self.nomes_conhecidos[melhor_indice]
                             autorizado_instantaneo = True
+
+                        if self.calibrar:
+                            resultado = "dentro" if dist <= self.limiar else "fora"
+                            print(f"[CALIBRAÇÃO] distância {dist:.3f} até {self.nomes_conhecidos[melhor_indice]} "
+                                  f"({resultado} da tolerância {self.limiar})")
 
                     # Filtro de histerese para evitar oscilações passageiras de luz/ângulo
                     if nome_instantaneo == self.candidato_nome:
@@ -115,18 +124,27 @@ class ReconhecedorAssincrono:
                         self.ultimo_status_autorizado = self.candidato_autorizado
                         self.ultima_confianca = confianca_instantanea
 
-                        # Cada mudança de identidade gera um único evento (log + som).
-                        # A mesma pessoa só gera outro evento depois de sair do quadro.
+                        # Cada chegada gera um único evento: o som sempre toca, mas o log
+                        # respeita a carência de cada pessoa (dicionário ultimo_registro).
                         agora = time.time()
-                        if (self.ultimo_reconhecido != self.ultimo_evento_disparado) and (
-                            agora - self.tempo_ultimo_evento > self.INTERVALO_COOLDOWN
-                        ):
-                            status = "AUTORIZADO" if self.ultimo_status_autorizado else "NEGADO"
-                            registrar_log(self.ultimo_reconhecido, status=status)
+                        nome = self.ultimo_reconhecido
+                        if nome != self.ultimo_evento_disparado:
+                            self.ultimo_evento_disparado = nome
                             emitir_som(self.ultimo_status_autorizado)
-                            print(f"[EVENTO] {status}: {self.ultimo_reconhecido} ({self.ultima_confianca:.1f}%)")
-                            self.ultimo_evento_disparado = self.ultimo_reconhecido
-                            self.tempo_ultimo_evento = agora
+
+                            carencia = (self.CARENCIA_AUTORIZADO if self.ultimo_status_autorizado
+                                        else self.CARENCIA_DESCONHECIDO)
+                            desde_ultimo = agora - self.ultimo_registro.get(nome, float("-inf"))
+
+                            if desde_ultimo >= carencia:
+                                status = "AUTORIZADO" if self.ultimo_status_autorizado else "NEGADO"
+                                registrar_log(nome, status=status)
+                                self.ultimo_registro[nome] = agora
+                                print(f"[EVENTO] {status}: {nome} "
+                                      f"({self.ultima_confianca:.1f}%, distância {dist:.3f})")
+                            else:
+                                print(f"[CARÊNCIA] {nome} já registrado há {desde_ultimo:.0f} s; "
+                                      f"sem novo registro no log.")
                     else:
                         # Mantém a leitura da confiança atualizada quando é o mesmo indivíduo
                         if nome_instantaneo == self.ultimo_reconhecido:
@@ -296,7 +314,7 @@ def desenhar_badge_identificacao(frame, x1, y1, x2, y2, nome, autorizado, confia
                 cv2.FONT_HERSHEY_DUPLEX, 0.45, (255, 255, 255), 1)
 
 
-def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
+def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=False):
     """Laço principal de monitoramento com pipeline assíncrono e estabilidade temporal."""
     nome_janela = "VisionGuard - Controle de Acesso Facial"
 
@@ -311,7 +329,9 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
     print("\n[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.")
     print("Pressione 'q' na janela de monitoramento para encerrar.\n")
 
-    reconhecedor = ReconhecedorAssincrono(encodings_conhecidos, nomes_conhecidos, limiar=0.58)
+    reconhecedor = ReconhecedorAssincrono(
+        encodings_conhecidos, nomes_conhecidos, limiar=0.58, calibrar=calibrar
+    )
 
     contador_quadros = 0
     locais_faces = []

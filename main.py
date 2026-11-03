@@ -20,9 +20,14 @@ def main():
     print(
         f"[SUCESSO] {len(nomes_conhecidos)} face(s) autorizada(s) carregada(s)."
     )
+    # python main.py --calibrar mostra a distância de cada leitura (usado nos testes da tolerância)
+    calibrar = "--calibrar" in sys.argv
+    if calibrar:
+        print("[CALIBRAÇÃO] Modo calibração ligado: a distância de cada leitura aparece no terminal.")
+
     print("[INICIANDO] Abrindo captura da webcam...\n")
 
-    iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos)
+    iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=calibrar)
 
 
 if __name__ == "__main__":
