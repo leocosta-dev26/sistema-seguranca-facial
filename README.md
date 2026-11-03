@@ -24,64 +24,67 @@ O projeto destaca-se pela sua **arquitetura assíncrona multithread**, que separ
 O projeto utiliza um padrão modular limpo (`src/utilitarios.py` e `src/reconhecedor.py` invocados por um `main.py` central):
 
 * **Thread de Captura:** O OpenCV lê o hardware da câmera continuamente em background para esvaziar o buffer do Windows (`ThreadedCamera`).
-* **Auditoria Prévia:** Ao inicializar, o sistema audita o lote de fotos de cadastro para garantir a integridade da base (`batch_face_locations`).
-* **Pipeline de Detecção:** Rastreamento dinâmico via HOG a cada 2 quadros, com projeção de malha biométrica (68 pontos anatômicos) estilo cyber-HUD.
+* **Auditoria Prévia:** Ao inicializar, o sistema localiza em lote, com o detector CNN, o rosto de cada foto de cadastro (`batch_face_locations`). A assinatura biométrica é gerada a partir do rosto encontrado; se o CNN não achar rosto numa foto, o sistema tenta o detector HOG antes de descartá-la.
+* **Pipeline de Detecção:** Detecção via HOG a cada 2 quadros. Quando há várias pessoas, só o rosto mais próximo da câmera (o maior) é verificado; os demais aparecem em cinza com o aviso "AGUARDE SUA VEZ". Antes do reconhecimento, o sistema confere se o rosto está de frente (olhos nivelados e nariz centralizado) e desenha a malha biométrica de 68 pontos no HUD.
 * **Histerese e Logs:** Estabilizador temporal (*debounce*) calibrado a uma tolerância euclidiana de `0.58`. O sistema exige 2 leituras congruentes para alterar o estado de acesso, evitando falsos negativos por oscilação de luz e registrando os acessos no arquivo `data/logs/acessos.csv`.
 
 ---
 
-## Integração da Biblioteca (Critério dos 8 Recursos)
-Para satisfazer os requisitos técnicos da disciplina, implementamos 8 funcionalidades distintas da biblioteca principal `face_recognition`:
+## Uso da Biblioteca `face_recognition` (Critério dos 8 Recursos)
+O VisionGuard usa a biblioteca em dois módulos (`src/utilitarios.py` e `src/reconhecedor.py`), com os 8 recursos abaixo.
 
-| Nº | Recurso / Método | Módulo | Função no Sistema |
+> **Como contamos:** a API pública da `face_recognition` tem 7 funções, e o sistema usa **todas elas**. A função `face_landmarks` aparece duas vezes na tabela porque usamos os **dois modelos treinados** que ela oferece: o de 5 pontos (`small`) e o de 68 pontos (`large`). São modelos diferentes, com finalidades diferentes no sistema (recursos 5 e 6).
+
+| Nº | Recurso | Módulo | Uso no Sistema |
 | :---: | :--- | :--- | :--- |
-| **1** | `load_image_file` | `src/utilitarios.py` | Decodificação das fotos de cadastro em matrizes NumPy RGB. |
-| **2** | `face_encodings(num_jitters=5)` | `src/utilitarios.py` | Amostragem estocástica múltipla para gerar assinaturas vetoriais mais robustas no cadastro. |
-| **3** | `batch_face_locations` | `src/utilitarios.py` | Auditoria em lote na inicialização para validar a integridade de toda a base de dados fotográfica. |
-| **4** | `face_locations(model="hog")` | `src/reconhecedor.py` | Detecção das caixas delimitadoras (*bounding boxes*) em tempo real via HOG. |
-| **5** | `face_landmarks(model="small")` | `src/reconhecedor.py` | Validação de enquadramento frontal (olhos e nariz nivelados) antes da inferência pesada. |
-| **6** | `face_landmarks(model="large")` | `src/reconhecedor.py` | Mapeamento dos 68 pontos anatômicos projetados visualmente como malha no HUD da câmera. |
-| **7** | `face_distance` | `src/reconhecedor.py` | Cálculo da distância euclidiana entre a pessoa na câmera e o vetor autorizado. |
-| **8** | `compare_faces(tolerance=0.58)` | `src/reconhecedor.py` | Validação booleana calibrada para o equilíbrio ótimo de iluminação em webcams comerciais. |
+| **1** | `load_image_file` | `src/utilitarios.py` | Lê as fotos de cadastro como matrizes NumPy RGB. |
+| **2** | `face_encodings` | `src/utilitarios.py` e `src/reconhecedor.py` | Gera a assinatura de 128 dimensões: no cadastro, com `num_jitters=5` (5 reamostragens para mais robustez) e a partir do rosto achado pela auditoria; na câmera, para o rosto que está sendo verificado. |
+| **3** | `batch_face_locations` | `src/utilitarios.py` | Localiza em lote, com o detector CNN, o rosto de cada foto de cadastro. Avisa sobre fotos sem rosto ou com mais de um rosto. |
+| **4** | `face_locations(model="hog")` | `src/reconhecedor.py` | Detecta os rostos da câmera em tempo real. |
+| **5** | `face_landmarks(model="small")` | `src/reconhecedor.py` | Modelo de 5 pontos: confere se os olhos estão nivelados e o nariz centralizado, e recusa rostos inclinados ou de perfil antes do reconhecimento. |
+| **6** | `face_landmarks(model="large")` | `src/reconhecedor.py` | Modelo de 68 pontos: desenha a malha biométrica no HUD. |
+| **7** | `face_distance` | `src/reconhecedor.py` | Calcula a distância entre o rosto da câmera e cada rosto cadastrado; a menor distância indica o candidato e gera o percentual exibido. |
+| **8** | `compare_faces(tolerance=0.58)` | `src/reconhecedor.py` | Decide se o candidato está dentro da tolerância de 0.58 para ser autorizado. |
 
 ---
 
 ## Guia de Instalação e Execução
 
 ### Pré-requisitos
-* Python 3.12 instalado.
-* Webcam compatível com DirectShow.
-* Compilador C++ da Microsoft (Build Tools) e CMake configurados (exigidos pelo `dlib`).
+* Windows 10 ou 11 (o sistema usa o DirectShow para a webcam e o `winsound` para os alertas sonoros).
+* Python 3.12.
+* Webcam.
+
+Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, que já vem compilado.
 
 ### Passo a Passo
 
-1. **Clonar o Repositório:**
-   ```bash
+1. **Clonar o repositório:**
+   ```powershell
    git clone https://github.com/leocosta-dev26/sistema-seguranca-facial
-   cd faculdade-reconhecimento-facial
+   cd sistema-seguranca-facial
+   ```
 
-```
+2. **Criar e ativar o ambiente virtual com o Python 3.12:**
+   ```powershell
+   py -3.12 -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+   Se o PowerShell bloquear a ativação, rode antes `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
 
-2. **Criar e Ativar o Ambiente Virtual:**
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+3. **Instalar as dependências:**
+   ```powershell
+   pip install --no-deps -r requirements.txt
+   ```
+   O `--no-deps` é obrigatório. Sem ele, o pip tenta compilar o `dlib` original, o que falha sem o Visual C++ instalado.
 
-```
-
-3. **Instalar Dependências:**
-```bash
-pip install -r requirements.txt
-
-```
-
-4. **Preparar a Base e Executar:**
-* Insira uma foto nítida (ex: `Leonardo.jpg`) na pasta `data/cadastros/`.
-* Inicie a aplicação:
-```bash
-python main.py
-
-```
+4. **Preparar a base e executar:**
+   * Coloque uma foto nítida e de frente (ex.: `Leonardo.jpg`) na pasta `data/cadastros/`. São aceitos `.jpg`, `.jpeg` e `.png`.
+   * Inicie a aplicação:
+     ```powershell
+     python main.py
+     ```
+   * Para encerrar, pressione `q` ou feche a janela.
 
 ## Casos de Teste e Resolução de Falhas Críticas
 
