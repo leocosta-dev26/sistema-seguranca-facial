@@ -14,7 +14,7 @@ def main():
 
     if not encodings_conhecidos:
         print("\n[ALERTA] Nenhum rosto cadastrado em data/cadastros/.")
-        print("Insira uma foto .jpg ou .png antes de iniciar.")
+        print("Insira uma foto .jpg, .jpeg ou .png antes de iniciar.")
         sys.exit(1)
 
     print(

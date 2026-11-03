@@ -5,11 +5,17 @@ import threading
 import time
 import winsound
 from datetime import datetime
-from src.utilitarios import registrar_log
+from src.utilitarios import registrar_log, area_do_rosto
+
+# Limites da validação de enquadramento frontal (calibráveis nos testes)
+LIMITE_INCLINACAO = 0.3     # desnível máximo entre os olhos, relativo à distância entre eles
+LIMITE_DESVIO_NARIZ = 0.2   # quanto o nariz pode se afastar do ponto médio entre os olhos
+
+COR_NEUTRA = (160, 160, 160)
 
 
 class ThreadedCamera:
-    """Captura fotogramas da webcam continuamente em segundo plano para eliminar latência."""
+    """Captura quadros da webcam continuamente em segundo plano para eliminar a latência."""
     def __init__(self, src=0):
         self.cap = cv2.VideoCapture(src, cv2.CAP_DSHOW)
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -32,13 +38,14 @@ class ThreadedCamera:
 
     def liberar(self):
         self.rodando = False
-        time.sleep(0.05)
+        # Espera a thread de captura terminar antes de liberar a câmera
+        self.thread.join(timeout=1.0)
         if self.cap.isOpened():
             self.cap.release()
 
 
 class ReconhecedorAssincrono:
-    """Gere a inferência biométrica com amortecimento temporal (histerese) e limiar calibrado."""
+    """Gerencia a inferência biométrica com amortecimento temporal (histerese) e limiar calibrado."""
     def __init__(self, encodings_conhecidos, nomes_conhecidos, limiar=0.58):
         self.encodings_conhecidos = encodings_conhecidos
         self.nomes_conhecidos = nomes_conhecidos
@@ -58,7 +65,7 @@ class ReconhecedorAssincrono:
 
         self.ultimo_evento_disparado = None
         self.tempo_ultimo_evento = 0.0
-        self.INTERVALO_COOLDOWN = 3.0  # Intervalo mínimo (segundos) entre notificações sonoras/logs
+        self.INTERVALO_COOLDOWN = 3.0  # Intervalo mínimo (segundos) entre dois eventos seguidos
 
     def solicitar_identificacao(self, rgb_frame, local_face):
         if self.processando:
@@ -68,14 +75,15 @@ class ReconhecedorAssincrono:
 
         def _inferir():
             try:
+                # RECURSO 2: face_recognition.face_encodings (assinatura do rosto da câmera)
                 encodings = face_recognition.face_encodings(rgb_frame, [local_face])
                 if len(encodings) > 0:
                     encoding = encodings[0]
 
-                    # RECURSO 7/8: face_recognition.face_distance
+                    # RECURSO 7: face_recognition.face_distance
                     distancias = face_recognition.face_distance(self.encodings_conhecidos, encoding)
 
-                    # RECURSO 8/8: face_recognition.compare_faces calibrado a 0.58
+                    # RECURSO 8: face_recognition.compare_faces calibrado em 0.58
                     correspondencias = face_recognition.compare_faces(
                         self.encodings_conhecidos, encoding, tolerance=self.limiar
                     )
@@ -107,25 +115,18 @@ class ReconhecedorAssincrono:
                         self.ultimo_status_autorizado = self.candidato_autorizado
                         self.ultima_confianca = confianca_instantanea
 
+                        # Cada mudança de identidade gera um único evento (log + som).
+                        # A mesma pessoa só gera outro evento depois de sair do quadro.
                         agora = time.time()
-                        if self.ultimo_status_autorizado:
-                            if (self.ultimo_evento_disparado != self.ultimo_reconhecido) or (
-                                agora - self.tempo_ultimo_evento > self.INTERVALO_COOLDOWN
-                            ):
-                                registrar_log(self.ultimo_reconhecido, status="AUTORIZADO")
-                                emitir_som(True)
-                                print(f"[EVENTO] AUTORIZADO: {self.ultimo_reconhecido} ({self.ultima_confianca:.1f}%)")
-                                self.ultimo_evento_disparado = self.ultimo_reconhecido
-                                self.tempo_ultimo_evento = agora
-                        else:
-                            if (self.ultimo_evento_disparado != "DESCONHECIDO") and (
-                                agora - self.tempo_ultimo_evento > self.INTERVALO_COOLDOWN
-                            ):
-                                registrar_log("DESCONHECIDO", status="NEGADO")
-                                emitir_som(False)
-                                print(f"[EVENTO] NEGADO: DESCONHECIDO ({self.ultima_confianca:.1f}%)")
-                                self.ultimo_evento_disparado = "DESCONHECIDO"
-                                self.tempo_ultimo_evento = agora
+                        if (self.ultimo_reconhecido != self.ultimo_evento_disparado) and (
+                            agora - self.tempo_ultimo_evento > self.INTERVALO_COOLDOWN
+                        ):
+                            status = "AUTORIZADO" if self.ultimo_status_autorizado else "NEGADO"
+                            registrar_log(self.ultimo_reconhecido, status=status)
+                            emitir_som(self.ultimo_status_autorizado)
+                            print(f"[EVENTO] {status}: {self.ultimo_reconhecido} ({self.ultima_confianca:.1f}%)")
+                            self.ultimo_evento_disparado = self.ultimo_reconhecido
+                            self.tempo_ultimo_evento = agora
                     else:
                         # Mantém a leitura da confiança atualizada quando é o mesmo indivíduo
                         if nome_instantaneo == self.ultimo_reconhecido:
@@ -137,7 +138,7 @@ class ReconhecedorAssincrono:
         threading.Thread(target=_inferir, daemon=True).start()
 
     def resetar_estado(self):
-        """Reinicia os indicadores de estado quando a câmara fica sem enquadramento facial."""
+        """Reinicia os indicadores de estado quando a câmera fica sem nenhum rosto."""
         self.ultimo_reconhecido = "DESCONHECIDO"
         self.ultimo_status_autorizado = False
         self.ultima_confianca = 0.0
@@ -175,20 +176,38 @@ def calcular_confianca(distancia, limiar=0.58):
 
 def verificar_enquadramento_frontal(rgb_pequeno, local_face):
     """
-    RECURSO 5/8: face_recognition.face_landmarks com model='small'
-    Validação ultrarrápida de 5 marcos (olhos e nariz) para garantir enquadramento frontal.
+    RECURSO 5: face_recognition.face_landmarks com model='small'
+    Usa os 5 marcos (cantos dos olhos e base do nariz) para recusar rostos
+    inclinados ou de perfil antes da inferência pesada.
     """
     marcos_5 = face_recognition.face_landmarks(rgb_pequeno, [local_face], model="small")
     if not marcos_5:
         return False
     dados = marcos_5[0]
-    return "left_eye" in dados and "right_eye" in dados and "nose_tip" in dados
+
+    # Centro de cada olho, ordenados da esquerda para a direita da imagem
+    centro_a = np.mean(dados["left_eye"], axis=0)
+    centro_b = np.mean(dados["right_eye"], axis=0)
+    olho_esq, olho_dir = sorted([centro_a, centro_b], key=lambda centro: centro[0])
+    nariz_x = dados["nose_tip"][0][0]
+
+    distancia_olhos = olho_dir[0] - olho_esq[0]
+    if distancia_olhos <= 0:
+        return False
+
+    # Cabeça inclinada para o lado: um olho fica bem mais alto que o outro
+    inclinacao = abs(olho_dir[1] - olho_esq[1]) / distancia_olhos
+
+    # Cabeça virada: o nariz sai do meio dos olhos (0.5 = centralizado)
+    posicao_nariz = (nariz_x - olho_esq[0]) / distancia_olhos
+
+    return inclinacao <= LIMITE_INCLINACAO and abs(posicao_nariz - 0.5) <= LIMITE_DESVIO_NARIZ
 
 
 def extrair_malha_biometrica(rgb_pequeno, local_face):
     """
-    RECURSO 6/8: face_recognition.face_landmarks com model='large'
-    Extração dos 68 pontos anatómicos para projeção da malha no HUD.
+    RECURSO 6: face_recognition.face_landmarks com model='large'
+    Extração dos 68 pontos anatômicos para desenhar a malha no HUD.
     """
     marcos_68 = face_recognition.face_landmarks(rgb_pequeno, [local_face], model="large")
     if marcos_68:
@@ -197,7 +216,7 @@ def extrair_malha_biometrica(rgb_pequeno, local_face):
 
 
 def desenhar_malha_hud(frame, marcos_dict, cor):
-    """Projeta os pontos anatómicos com reescalonamento para o fotograma original."""
+    """Desenha os pontos anatômicos, convertidos para a escala do quadro original."""
     for parte, pontos in marcos_dict.items():
         for (x, y) in pontos:
             cv2.circle(frame, (x * 4, y * 4), 1, cor, -1)
@@ -217,7 +236,14 @@ def desenhar_cantos_estilizados(imagem, x1, y1, x2, y2, cor, espessura=2, compri
     cv2.line(imagem, (x1, y2), (x1 + comprimento, y2), cor, espessura)
     cv2.line(imagem, (x1, y2), (x1, y2 - comprimento), cor, espessura)
     cv2.line(imagem, (x2, y2), (x2 - comprimento, y2), cor, espessura)
-    cv2.line(imagem, (x2, y2), (x2 - comprimento, y2), cor, espessura)
+    cv2.line(imagem, (x2, y2), (x2, y2 - comprimento), cor, espessura)
+
+
+def desenhar_rotulo_neutro(frame, x1, y1, x2, y2, texto):
+    """Moldura cinza com um aviso, para rostos que não estão sendo verificados."""
+    desenhar_cantos_estilizados(frame, x1, y1, x2, y2, COR_NEUTRA)
+    pos_y = max(55, y1 - 10)
+    cv2.putText(frame, texto, (x1, pos_y), cv2.FONT_HERSHEY_DUPLEX, 0.5, COR_NEUTRA, 1)
 
 
 def desenhar_painel_superior(frame, total_cadastros):
@@ -242,7 +268,7 @@ def desenhar_painel_superior(frame, total_cadastros):
 
 
 def desenhar_badge_identificacao(frame, x1, y1, x2, y2, nome, autorizado, confianca):
-    """Renderiza a etiqueta translúcida com contenção nas extremidades do ecrã."""
+    """Desenha a etiqueta translúcida sem deixar que ela saia da tela."""
     altura_frame, largura_frame, _ = frame.shape
     altura_badge = 48
     largura_badge = 200
@@ -271,12 +297,13 @@ def desenhar_badge_identificacao(frame, x1, y1, x2, y2, nome, autorizado, confia
 
 
 def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
-    """Ciclo principal de monitorização com pipeline assíncrono e estabilidade temporal."""
+    """Laço principal de monitoramento com pipeline assíncrono e estabilidade temporal."""
     nome_janela = "VisionGuard - Controle de Acesso Facial"
 
     camera = ThreadedCamera(0)
     if not camera.sucesso:
         print("[ERRO] Falha ao conectar a webcam via DirectShow.")
+        camera.liberar()
         return
 
     cv2.namedWindow(nome_janela, cv2.WINDOW_NORMAL)
@@ -288,6 +315,8 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
 
     contador_quadros = 0
     locais_faces = []
+    local_principal = None
+    frontal_ok = False
     marcos_faciais = {}
     tempo_ultimo_rosto = time.time()
 
@@ -299,36 +328,48 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
 
         contador_quadros += 1
 
-        # Rastreio de localização a cada 2 fotogramas
+        # Localiza os rostos a cada 2 quadros
         if contador_quadros % 2 == 0:
             frame_pequeno = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
             rgb_pequeno = cv2.cvtColor(frame_pequeno, cv2.COLOR_BGR2RGB)
 
-            # RECURSO 4/8: face_recognition.face_locations com model="hog"
+            # RECURSO 4: face_recognition.face_locations com model="hog"
             locais_faces = face_recognition.face_locations(rgb_pequeno, model="hog")
 
             if len(locais_faces) > 0:
                 tempo_ultimo_rosto = time.time()
-                local_principal = locais_faces[0]
+                # Só o rosto mais próximo da câmera (o maior) é verificado
+                local_principal = max(locais_faces, key=area_do_rosto)
 
-                # RECURSO 5/8: Validação de enquadramento frontal (model="small")
+                # RECURSO 5: face_landmarks com model="small" recusa rostos inclinados ou de perfil
                 frontal_ok = verificar_enquadramento_frontal(rgb_pequeno, local_principal)
 
-                # RECURSO 6/8: Extração dos 68 marcos anatómicos (model="large")
+                # RECURSO 6: face_landmarks com model="large" extrai os 68 marcos da malha do HUD
                 marcos_faciais = extrair_malha_biometrica(rgb_pequeno, local_principal)
 
                 if frontal_ok:
                     reconhecedor.solicitar_identificacao(rgb_pequeno, local_principal)
             else:
+                local_principal = None
                 marcos_faciais = {}
                 if time.time() - tempo_ultimo_rosto > 2.0:
                     reconhecedor.resetar_estado()
 
         desenhar_painel_superior(frame, len(nomes_conhecidos))
 
-        # Renderização visual dos elementos do HUD
-        for (topo, direita, baixo, esquerda) in locais_faces:
+        # Desenho dos elementos do HUD
+        for local in locais_faces:
+            topo, direita, baixo, esquerda = local
             x1, y1, x2, y2 = esquerda * 4, topo * 4, direita * 4, baixo * 4
+
+            # Os demais rostos não foram verificados e nunca aparecem como liberados
+            if local != local_principal:
+                desenhar_rotulo_neutro(frame, x1, y1, x2, y2, "AGUARDE SUA VEZ")
+                continue
+
+            if not frontal_ok:
+                desenhar_rotulo_neutro(frame, x1, y1, x2, y2, "OLHE PARA A CAMERA")
+                continue
 
             autorizado = reconhecedor.ultimo_status_autorizado
             cor_tema = (0, 255, 120) if autorizado else (0, 0, 255)
@@ -348,6 +389,10 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos):
         cv2.imshow(nome_janela, frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+        # Fechar a janela pelo X também encerra o sistema
+        if cv2.getWindowProperty(nome_janela, cv2.WND_PROP_VISIBLE) < 1:
             break
 
     camera.liberar()
