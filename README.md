@@ -26,7 +26,45 @@ O projeto utiliza um padrão modular limpo (`src/utilitarios.py` e `src/reconhec
 * **Thread de Captura:** O OpenCV lê o hardware da câmera continuamente em background para esvaziar o buffer do Windows (`ThreadedCamera`).
 * **Auditoria Prévia:** Ao inicializar, o sistema localiza em lote, com o detector CNN, o rosto de cada foto de cadastro (`batch_face_locations`). A assinatura biométrica é gerada a partir do rosto encontrado; se o CNN não achar rosto numa foto, o sistema tenta o detector HOG antes de descartá-la.
 * **Pipeline de Detecção:** Detecção via HOG a cada 2 quadros. Quando há várias pessoas, só o rosto mais próximo da câmera (o maior) é verificado; os demais aparecem em cinza com o aviso "AGUARDE SUA VEZ". Antes do reconhecimento, o sistema confere se o rosto está de frente (olhos nivelados e nariz centralizado) e desenha a malha biométrica de 68 pontos no HUD.
-* **Histerese e Logs:** Estabilizador temporal (*debounce*) calibrado a uma tolerância euclidiana de `0.58`. O sistema exige 2 leituras congruentes para alterar o estado de acesso, evitando falsos negativos por oscilação de luz e registrando os acessos no arquivo `data/logs/acessos.csv`.
+* **Histerese e Logs:** Estabilizador temporal (*debounce*) calibrado a uma tolerância euclidiana de `0.58`. O sistema exige 2 leituras congruentes para alterar o estado de acesso, evitando falsos negativos por oscilação de luz, e registra os acessos no arquivo `data/logs/acessos.csv` seguindo as regras da seção "Regras do Registro".
+
+### Como os dados andam
+
+```mermaid
+flowchart LR
+    subgraph CAD["Cadastro (ao iniciar)"]
+        A["Fotos em data/cadastros"] --> B["load_image_file"]
+        B --> C["batch_face_locations<br/>auditoria em lote (CNN)"]
+        C --> D["face_encodings<br/>assinatura de 128 números"]
+    end
+    subgraph CAM["Câmera (tempo real)"]
+        E["Webcam<br/>thread de captura"] --> F["face_locations (HOG)<br/>a cada 2 quadros"]
+        F --> G{"Rosto de frente?<br/>face_landmarks small"}
+        G -->|não| H["OLHE PARA A CAMERA"]
+        G -->|sim| I["face_encodings<br/>em outra thread"]
+        I --> J["face_distance +<br/>compare_faces (0.58)"]
+        J --> K{"2 leituras iguais?"}
+        K -->|sim| L["Tela com malha (face_landmarks large)<br/>e som"]
+        K -->|sim| M{"Fora da carência?"}
+        M -->|sim| N[("data/logs/acessos.csv")]
+    end
+    D --> J
+```
+
+### Regras do Registro
+
+O `data/logs/acessos.csv` tem uma linha por evento, com Data, Hora, Nome e Status (`AUTORIZADO` ou `NEGADO`).
+
+| Situação | O que acontece |
+| :--- | :--- |
+| Pessoa parada diante da câmera | Um único registro, na chegada |
+| A mesma pessoa volta em menos de 5 minutos | O som toca, mas não há linha nova no log (carência) |
+| A mesma pessoa volta depois de 5 minutos | Novo registro |
+| Duas pessoas se alternando na frente da câmera | Cada uma é registrada no máximo uma vez a cada 5 minutos |
+| Pessoa desconhecida | Registrada como `DESCONHECIDO` / `NEGADO`, com carência de 30 segundos, porque todos os estranhos compartilham o mesmo nome |
+| Ninguém na câmera por 2 segundos | O sistema considera que a pessoa saiu; a próxima aparição conta como nova chegada |
+
+O sistema não distingue entrada de saída: cada chegada diante da câmera conta como um evento. Os tempos de carência ficam em `src/reconhecedor.py` (`CARENCIA_AUTORIZADO` e `CARENCIA_DESCONHECIDO`).
 
 ---
 
@@ -85,6 +123,16 @@ Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, q
      python main.py
      ```
    * Para encerrar, pressione `q` ou feche a janela.
+   * Para medir a tolerância de reconhecimento, inicie com `python main.py --calibrar`: a distância de cada leitura aparece no terminal (0 = rosto idêntico; quanto maior, mais diferente; abaixo de `0.58`, o acesso é liberado).
+
+## Riscos e Plano B
+
+| Risco | Plano B |
+| :--- | :--- |
+| O sistema só roda no Windows (`cv2.CAP_DSHOW` e `winsound`) | Apresentar no notebook do Leonardo, já instalado e testado |
+| A webcam ou a demonstração ao vivo falhar | Vídeo da demonstração gravado com antecedência, com cópia offline |
+| A instalação falhar numa máquina nova | Ambiente instalado e testado antes da apresentação; instalação com `pip install --no-deps -r requirements.txt` |
+| Pouca luz na sala | Posicionar a câmera de frente para a luz; resultado do teste de iluminação registrado nos casos de teste |
 
 ## Casos de Teste e Resolução de Falhas Críticas
 
