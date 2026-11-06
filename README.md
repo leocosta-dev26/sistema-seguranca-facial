@@ -163,3 +163,29 @@ Durante a fase de testes práticos da Entrega 3, documentamos os seguintes cená
 ## Declaração de Uso de Ferramentas de IA
 
 O uso de Inteligência Artificial generativa neste projeto ocorreu de forma pontual e focada. Utilizamos a ferramenta no início do desenvolvimento para auxiliar na ideação da estrutura modular inicial do projeto, consultamos esporadicamente no meio do processo para ultrapassar pequenos entraves sintáticos de integração com bibliotecas compiladas em C++, e, na fase final, utilizamos apenas para revisão textual e validação de documentação. Todo o planejamento arquitetural, calibração de histerese, isolamento de threads e resolução de gargalos de hardware foram executados e homologados integralmente pelos alunos.
+
+
+Vídeo de demonstração do VisionGuard (plano B): https://drive.google.com/file/d/1uVah6KAVSw06vzCmwhbU8Kg6wbz26qNw/view?usp=drive_link
+
+## Como cadastrar uma pessoa
+
+Para autorizar uma pessoa no sistema, basta colocar uma foto do rosto dela na pasta `data/cadastros/`.
+
+**Formatos aceitos:** `.jpg`, `.jpeg` e `.png`.
+
+**Nome exibido:** o nome vem do nome do arquivo. O sistema tira a extensão, troca `_` por espaço e coloca as iniciais em maiúsculas. Exemplo: `maria_silva.jpg` vira **Maria Silva**.
+
+**Dicas para a foto:**
+* rosto de frente, olhando para a câmera;
+* boa iluminação, sem sombra forte no rosto;
+* só uma pessoa na foto.
+
+**Mensagens na inicialização:**
+* `[AUDITORIA]`: o sistema confere, em lote, se cada foto da pasta tem um rosto.
+* `[CADASTRO]`: mostra o nome da pessoa que está sendo cadastrada. Quando termina bem, aparece `[SUCESSO]`.
+* `[AVISO]`: algo na foto merece atenção. Por exemplo, a foto tem mais de um rosto (o sistema usa o maior) ou não tem rosto (a foto é ignorada).
+
+**Atenção:** depois de adicionar uma foto nova, é preciso **reiniciar o sistema** (`python main.py`) para ela valer. As fotos só são lidas na inicialização, e cada foto leva cerca de 10 segundos.
+
+**Privacidade (LGPD):** o rosto é um dado biométrico sensível. Só cadastre pessoas que concordaram.
+
