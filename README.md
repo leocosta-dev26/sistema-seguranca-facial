@@ -16,7 +16,7 @@
 ## Visão Geral do Projeto
 O **VisionGuard** é um protótipo MVP (Produto Mínimo Viável) de controle de acesso físico baseado em biometria facial, desenvolvido em Python. O sistema monitora um fluxo de vídeo em tempo real, detecta rostos, mapeia traços anatômicos e valida a identidade contra uma base de dados local autorizada.
 
-O projeto destaca-se pela sua **arquitetura assíncrona multithread**, que separa a captura de vídeo da inferência matemática pesada, garantindo um monitoramento fluido a 30 FPS sem latência.
+O projeto destaca-se pela sua **arquitetura assíncrona multithread**, que separa a captura de vídeo da inferência matemática pesada, garantindo um monitoramento fluido, sem atraso perceptível na imagem.
 
 ---
 
@@ -137,6 +137,34 @@ Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, q
    * Para encerrar, pressione `q` ou feche a janela.
    * Para medir a tolerância de reconhecimento, inicie com `python main.py --calibrar`: a distância de cada leitura aparece no terminal (0 = rosto idêntico; quanto maior, mais diferente; abaixo de `0.58`, o acesso é liberado).
 
+## Como usar
+
+Com o sistema aberto (`python main.py`), a janela **"VisionGuard - Controle de Acesso Facial"** mostra a câmera. No alto ficam o número de pessoas cadastradas (`BASE`) e o horário. Fique de frente para a câmera, a menos de 1 metro.
+
+### O que aparece na tela
+
+| Situação | Tela | Som |
+| :--- | :--- | :--- |
+| Pessoa cadastrada | Moldura **verde**, malha de pontos no rosto e o cartão "ACESSO LIBERADO" com o nome e o percentual | Dois bipes agudos |
+| Pessoa desconhecida | Moldura **vermelha** e o cartão "ACESSO NEGADO" / "DESCONHECIDO" | Um bipe grave e longo |
+| Rosto de lado ou inclinado | Moldura **cinza** com "OLHE PARA A CAMERA" (o rosto não é verificado) | Nenhum |
+| Outras pessoas no quadro | Moldura **cinza** com "AGUARDE SUA VEZ": só o rosto mais próximo da câmera é verificado | Nenhum |
+
+O resultado só muda depois de **duas leituras iguais seguidas**, por isso leva um instante para aparecer.
+
+### O registro (log)
+
+Cada chegada diante da câmera gera uma linha em `data/logs/acessos.csv`, com Data, Hora, Nome e Status (`AUTORIZADO` ou `NEGADO`). Para não encher o log, a mesma pessoa só é registrada de novo depois de 5 minutos, e um desconhecido depois de 30 segundos (ver "Regras do Registro"). Enquanto isso, o som toca e o terminal mostra `[CARÊNCIA]`, mas nenhuma linha nova entra no log.
+
+### O que aparece no terminal
+
+* `[EVENTO] AUTORIZADO: Nome (88.2%, distância 0.283)` ou `[EVENTO] NEGADO: DESCONHECIDO (...)`: um registro novo no log.
+* `[CARÊNCIA] Nome já registrado há 47 s; sem novo registro no log.`: a pessoa voltou antes do fim da carência.
+
+### Encerrar
+
+Pressione `q` com a janela da câmera selecionada, ou feche a janela pelo X.
+
 ## Riscos e Plano B
 
 | Risco | Plano B |
@@ -150,13 +178,33 @@ Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, q
 
 Durante a fase de testes práticos da Entrega 3, documentamos os seguintes cenários:
 
-1. **Teste de Sucesso (Condições Normais):** Identificação estabilizada entre 76% e 85% de confiança, com emissão de alerta sonoro agudo e registro de status "AUTORIZADO" no CSV. Transição imediata para "DESCONHECIDO" com alerta grave ao captar uma face não cadastrada.
+1. **Teste de Sucesso (Condições Normais):** Identificação estabilizada entre 85% e 89% de confiança com o rosto real de frente (medido nos testes T02, T07, T10, T12 e T13), com dois bipes agudos e registro de status "AUTORIZADO" no CSV. Transição para "DESCONHECIDO" após duas leituras consecutivas, com bipe grave, ao captar uma face não cadastrada (T03).
 2. **Registro de Falha e Contingência (Latência de Vídeo):**
 * **O Problema:** Na primeira iteração, a execução síncrona da inferência pesada (`face_encodings`) a cada quadro bloqueava a CPU, acumulando quadros na fila do driver e gerando um atraso de 1,5 a 2 segundos na imagem da câmera.
-* **A Solução Aplicada:** Refatoramos a arquitetura para **Multithreading Assíncrono**. A câmera passou a ser consumida em tempo real por uma thread paralela dedicada (`ThreadedCamera`), enquanto a inferência pesada roda em segundo plano disparada apenas com enquadramento frontal validado. O atraso foi totalmente eliminado, sustentando 30 FPS contínuos.
+* **A Solução Aplicada:** Refatoramos a arquitetura para **Multithreading Assíncrono**. A câmera passou a ser consumida em tempo real por uma thread paralela dedicada (`ThreadedCamera`), enquanto a inferência pesada roda em segundo plano disparada apenas com enquadramento frontal validado. O atraso foi eliminado, e a imagem passou a acompanhar a câmera sem atraso perceptível.
 
 
-3. **Limitações do Modelo:** O algoritmo HOG padrão atenua a detecção em rotações de perfil superiores a 45 graus ou a distâncias maiores que 2 metros (devido à redução de escala em 0.25x adotada para otimização do processador).
+3. **Limitações do Modelo:** nos testes, o sistema reconheceu o rosto até cerca de 1 metro da câmera; mais longe, o rosto nem é detectado, por causa da redução de escala em 0.25x adotada para otimizar o processador (T09). As demais limitações estão na seção "Limitações conhecidas".
+
+A tabela completa dos 16 casos de teste, com as evidências de cada um, está em [`docs/testes.md`](docs/testes.md).
+
+---
+
+## Limitações conhecidas
+
+Cada item foi confirmado nos testes. Os detalhes e as evidências estão em [`docs/testes.md`](docs/testes.md).
+
+* **Exige processador com suporte a AVX.** O `dlib-bin` vem compilado com instruções AVX. Num processador sem AVX (por exemplo, o Intel Celeron N4000), o programa fecha sem nenhuma mensagem ao carregar o `dlib` (T01).
+* **Só funciona no Windows** (usa o DirectShow e o `winsound`), e a câmera só é aberta pelo DirectShow. Câmeras que só funcionam pelo Media Foundation, como o celular usado como webcam pelo DroidCam, não abrem (T01).
+* **Não há prova de vida:** uma foto da pessoa cadastrada mostrada à câmera libera o acesso, com confiança até maior que a do rosto real (93% contra 85% a 89%) (T06).
+* **Alcance de cerca de 1 metro.** Mais longe, o rosto não é detectado (T09). O desempenho com pouca luz ainda não foi medido (T08).
+* **Verifica uma pessoa por vez:** só o rosto mais próximo da câmera; os outros ficam em cinza com "AGUARDE SUA VEZ" (T04).
+* **Rosto de lado:** para um dos lados, o sistema pede para olhar para a câmera, como esperado. Para o outro, um rosto quase de perfil passou pela checagem de frente e foi confundido com outra pessoa cadastrada (T05). O problema está registrado como P6 em `docs/testes.md`.
+* **Entrar ou sair do quadro** pode gerar uma leitura falsa de "DESCONHECIDO" para uma pessoa cadastrada, com bipe grave e linha `NEGADO` no log (T07).
+* **Todos os desconhecidos têm o mesmo nome** ("DESCONHECIDO"). Por isso, um segundo estranho que chega menos de 30 segundos depois do primeiro não é registrado (T14).
+* **O percentual exibido não é uma probabilidade.** É uma escala calculada a partir da distância entre os rostos: uma pessoa autorizada aparece sempre entre 78% e 98%.
+* **As fotos de cadastro só são lidas na inicialização**, e cada foto deixa o início mais lento, por causa da auditoria com o detector CNN no processador.
+* **O sistema não abre portas nem catracas:** ele indica e registra o acesso.
 
 ---
 
