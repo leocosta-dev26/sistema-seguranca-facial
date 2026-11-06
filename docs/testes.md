@@ -16,7 +16,7 @@
 ## Como ler este documento
 
 - **Status:** `Passou`, `Falhou` ou `Pendente` (ainda não executado).
-- **Evidência:** link para o print em `docs/evidencias/`, a gravação de tela ou o trecho do `data/logs/acessos.csv`. Prints que mostram o rosto de alguém não vão para o repositório: ficam guardados com o responsável.
+- **Evidência:** link para o print em `docs/evidencias/`, a gravação de tela ou o trecho do `data/logs/acessos.csv`. Prints com o rosto do Gabriel estão em `evidencias-privadas-com-rosto/`, publicados com a autorização dele.
 - Os detalhes de cada execução ficam na seção "Registro das execuções", no fim do documento.
 
 ## Como os testes foram executados
@@ -36,11 +36,11 @@ Em todas as formas, **nenhum arquivo do projeto foi alterado**. Os scripts de ap
 | ID | Cenário | Resultado esperado | Obtido | Status | Evidência |
 | :---: | :--- | :--- | :--- | :---: | :--- |
 | T01 | Instalação em máquina limpa, seguindo só o README | Instala sem erro e abre a janela da câmera | **PC 1:** as dependências instalaram, mas o `python main.py` fecha sem mensagem: `Illegal instruction` no `dlib`, porque o processador não tem AVX (P1, P2, P3). **PC 2:** instalou sem erro, carregou os 2 cadastros e parou em `[ERRO] Falha ao conectar a webcam via DirectShow`, porque não havia webcam (P4). Com o DroidCam: `int divide by zero` no driver ao abrir a câmera 0 (P5). **Com o adaptador de teste (Media Foundation, 1280x720): a janela da câmera abriu com imagem e reconheceu o Gabriel** | Passou no PC 2 (com adaptador); falhou no PC 1 | PC 1: [pip](evidencias/T01-pip-ok.png), [erro](evidencias/T01-illegal-instruction.png), [CPU](evidencias/T01-processador.png) · PC 2: [início](evidencias/T01-pc2-1-sem-python312.png), [pip](evidencias/T01-pc2-2-pip-no-python314.png), [sem webcam](evidencias/T01-pc2-3-sem-webcam.png), [DroidCam](evidencias/T01-pc2-4-droidcam-divide-by-zero.png), [aprovado](evidencias/T01-pc2-7-terminal-autorizado.png) |
-| T02 | Pessoa cadastrada de frente, a 50 cm–1 m | "ACESSO LIBERADO", nome e %, dois bipes agudos, uma linha AUTORIZADO. Anotar o % | PC 2, com adaptador: moldura verde com "ACESSO LIBERADO" e "Gabriel (89%)", malha de pontos no rosto, dois bipes agudos (confirmados pelo testador) e uma linha no log (`05/11/2026,23:56:36,Gabriel,AUTORIZADO`). Terminal: `AUTORIZADO: Gabriel (89.1%, distância 0.257)`. Na 1ª leitura, às 23:53: 87,2% | Passou | [terminal](evidencias/T02-terminal-autorizado.png) (tela com rosto guardada fora do repositório) |
+| T02 | Pessoa cadastrada de frente, a 50 cm–1 m | "ACESSO LIBERADO", nome e %, dois bipes agudos, uma linha AUTORIZADO. Anotar o % | PC 2, com adaptador: moldura verde com "ACESSO LIBERADO" e "Gabriel (89%)", malha de pontos no rosto, dois bipes agudos (confirmados pelo testador) e uma linha no log (`05/11/2026,23:56:36,Gabriel,AUTORIZADO`). Terminal: `AUTORIZADO: Gabriel (89.1%, distância 0.257)`. Na 1ª leitura, às 23:53: 87,2% | Passou | [terminal](evidencias/T02-terminal-autorizado.png), [tela](evidencias-privadas-com-rosto/T02-acesso-liberado-COM-ROSTO.png) |
 | T03 | Pessoa desconhecida (foto no celular ou pessoa real que concordou) | "ACESSO NEGADO", um bipe grave, uma linha DESCONHECIDO, NEGADO | Automático, rosto gerado por IA: cartão vermelho "ACESSO NEGADO / DESCONHECIDO", terminal `NEGADO: DESCONHECIDO (34.9%, distância 0.761)`, uma linha `DESCONHECIDO,NEGADO` no log. Som não verificado (execução automática) | Passou | [terminal](testes-automaticos-ia/resultados/T03/terminal.txt), [log](testes-automaticos-ia/resultados/T03/acessos.csv), [tela](testes-automaticos-ia/resultados/T03/tela_006s.jpg) |
-| T04 | Duas pessoas, uma mais perto que a outra | O mais perto é verificado; o outro fica cinza com "AGUARDE SUA VEZ" | Automático, com a foto de cadastro do Gabriel e um rosto gerado por IA. **Gabriel perto:** `AUTORIZADO: Gabriel (94.2%)` e o rosto de trás cinza, "AGUARDE SUA VEZ". **Rosto IA perto:** `NEGADO: DESCONHECIDO (35.0%)` e o Gabriel, atrás, cinza, "AGUARDE SUA VEZ", **sem ser liberado** | Passou | [terminal](testes-automaticos-ia/resultados/T04/terminal.txt), [log](testes-automaticos-ia/resultados/T04/acessos.csv) (telas com o rosto do Gabriel guardadas fora do repositório) |
-| T05 | Rosto de lado (virar a cabeça devagar para os dois lados) | "OLHE PARA A CAMERA" antes de qualquer "ACESSO NEGADO"; muito de lado, a moldura some | PC 2, com adaptador. **Um lado:** funcionou como esperado (moldura cinza "OLHE PARA A CAMERA" e, mais de lado, a moldura some). **Outro lado:** quase de perfil, a checagem de frente **não barrou**: moldura verde "ACESSO LIBERADO" e, em seguida, **o Gabriel foi reconhecido como Leonardo** (`AUTORIZADO: Leonardo (79.7%, distância 0.530)`) e o log registrou `23:59:21,Leonardo,AUTORIZADO` (P6) | Falhou | [terminal](evidencias/T05-terminal-leonardo-autorizado.png) (4 prints com rosto guardados fora do repositório) |
-| T06 | Foto do cadastrado no celular | Provavelmente libera (confirma a falta de prova de vida) | PC 2, com adaptador: a foto `Gabriel.jpeg`, aberta no segundo monitor e filmada pelo celular, **liberou o acesso**. Tela: "ACESSO LIBERADO", "Gabriel (93%)". Terminal: `AUTORIZADO: Gabriel (93.2%, distância 0.139)`. Log: `06/11/2026,00:14:48,Gabriel,AUTORIZADO`. A confiança foi **maior** que com o rosto real (85% a 89%) | Passou (confirma a limitação) | [terminal](evidencias/T06-terminal-foto-liberada.png) (tela com rosto guardada fora do repositório) |
+| T04 | Duas pessoas, uma mais perto que a outra | O mais perto é verificado; o outro fica cinza com "AGUARDE SUA VEZ" | Automático, com a foto de cadastro do Gabriel e um rosto gerado por IA. **Gabriel perto:** `AUTORIZADO: Gabriel (94.2%)` e o rosto de trás cinza, "AGUARDE SUA VEZ". **Rosto IA perto:** `NEGADO: DESCONHECIDO (35.0%)` e o Gabriel, atrás, cinza, "AGUARDE SUA VEZ", **sem ser liberado** | Passou | [terminal](testes-automaticos-ia/resultados/T04/terminal.txt), [log](testes-automaticos-ia/resultados/T04/acessos.csv), [Gabriel perto](evidencias-privadas-com-rosto/T04-gabriel-perto-ia-longe-COM-ROSTO.jpg), [rosto IA perto](evidencias-privadas-com-rosto/T04-ia-perto-gabriel-longe-COM-ROSTO.jpg) |
+| T05 | Rosto de lado (virar a cabeça devagar para os dois lados) | "OLHE PARA A CAMERA" antes de qualquer "ACESSO NEGADO"; muito de lado, a moldura some | PC 2, com adaptador. **Um lado:** funcionou como esperado (moldura cinza "OLHE PARA A CAMERA" e, mais de lado, a moldura some). **Outro lado:** quase de perfil, a checagem de frente **não barrou**: moldura verde "ACESSO LIBERADO" e, em seguida, **o Gabriel foi reconhecido como Leonardo** (`AUTORIZADO: Leonardo (79.7%, distância 0.530)`) e o log registrou `23:59:21,Leonardo,AUTORIZADO` (P6) | Falhou | [terminal](evidencias/T05-terminal-leonardo-autorizado.png), [olhe para a câmera](evidencias-privadas-com-rosto/T05-1-olhe-para-a-camera-COM-ROSTO.png), [de lado](evidencias-privadas-com-rosto/T05-2-de-lado-sem-moldura-COM-ROSTO.png), [perfil liberado](evidencias-privadas-com-rosto/T05-3-perfil-liberado-gabriel-COM-ROSTO.png), [liberado como Leonardo](evidencias-privadas-com-rosto/T05-4-perfil-liberado-como-leonardo-COM-ROSTO.png) |
+| T06 | Foto do cadastrado no celular | Provavelmente libera (confirma a falta de prova de vida) | PC 2, com adaptador: a foto `Gabriel.jpeg`, aberta no segundo monitor e filmada pelo celular, **liberou o acesso**. Tela: "ACESSO LIBERADO", "Gabriel (93%)". Terminal: `AUTORIZADO: Gabriel (93.2%, distância 0.139)`. Log: `06/11/2026,00:14:48,Gabriel,AUTORIZADO`. A confiança foi **maior** que com o rosto real (85% a 89%) | Passou (confirma a limitação) | [terminal](evidencias/T06-terminal-foto-liberada.png), [tela](evidencias-privadas-com-rosto/T06-foto-no-monitor-liberada-COM-ROSTO.png) |
 | T07 | Sair e voltar (carência) | Volta rápida: som e `[CARÊNCIA]`, sem linha nova. Após 5 min: linha nova. Parado: nenhuma linha nova | PC 2, com adaptador. Registro às 00:25:47. **Parado e voltas rápidas:** só `[CARÊNCIA] Gabriel já registrado há 47 s ... 295 s`, sem linha nova. **Depois de 5 min:** linha nova às 00:31:18 (`AUTORIZADO: Gabriel (88.8%)`). Na mesma execução, 3 leituras do Gabriel entrando ou saindo do quadro viraram `DESCONHECIDO, NEGADO` (P7) | Passou (com a ressalva do P7) | [terminal](evidencias/T07-terminal-completo.png) |
 | T08 | Pouca luz / contra a luz | Anotar se reconhece, nega ou nem detecta | | Pendente | |
 | T09 | Distância: 0,5 m, 1 m, 2 m e 3 m | Anotar até onde detecta e até onde reconhece | PC 2, com adaptador (celular pelo DroidCam, 1280x720). **Até cerca de 1 m:** detecta e reconhece (moldura verde, Gabriel). **A partir de cerca de 1 m:** não reconhece, e nas capturas mais distantes nem desenha moldura (o rosto não é detectado). Distâncias estimadas pelo testador | Executado (medição) | 3 prints com rosto guardados fora do repositório |
@@ -62,14 +62,14 @@ A coluna "Antes" aponta o commit da correção no GitHub, que mostra o código a
 
 | ID | O que falhava | Correção | Antes (commit) | Depois (teste) |
 | :---: | :--- | :--- | :--- | :--- |
-| F1 | Imagem da câmera com 1,5 a 2 s de atraso | Captura e reconhecimento em threads separadas | _link do commit_ | T02 (gravação de tela) |
-| F2 | Pessoa autorizada parada gerava log e bipe a cada 3 s | Um evento por chegada | _link do commit_ | T07: confirmado (parado diante da câmera, nenhuma linha nova por mais de 5 min) |
-| F3 | Rosto levemente de lado era negado ("DESCONHECIDO") | `LIMITE_DESVIO_NARIZ` calibrado de 0,3 para 0,2 | _link do commit_ | T05 |
-| F4 | Com duas pessoas, todos recebiam o resultado do primeiro (desconhecido aparecia como LIBERADO) | Só o maior rosto é verificado; os outros ficam cinza | _link do commit_ | T04: confirmado (o rosto de trás fica cinza, e o Gabriel atrás de um desconhecido não foi liberado) |
-| F5 | Instalação falhava em máquina limpa (o pip tentava compilar o `dlib`) | Instalação com `--no-deps` e versões fixas | _link do commit_ | T01: confirmado nos dois PCs, o `pip` instalou sem compilar nada |
-| F6 | Desconhecido não entrava no log (apontado pelo professor na Entrega 2) | Desconhecido registrado como NEGADO | _link do commit_ | T03: confirmado (linha `DESCONHECIDO,NEGADO` no log) |
-| F7 | O log guardava só a última pessoa; com duas se alternando, enchia de novo (apontado pelo professor) | Horário do último registro de cada pessoa e carência de 5 min (30 s para desconhecido) | _link do commit_ | T13, T07 e T14: confirmados (alternância, carência de 5 min e carência de 30 s do desconhecido) |
-| F8 | Foto de cadastro com duas pessoas autorizava a errada sem aviso (apontado pelo professor) | A auditoria avisa e usa o maior rosto | _link do commit_ | T15: confirmado (aviso exibido; só o maior rosto autoriza) |
+| F1 | Imagem da câmera com 1,5 a 2 s de atraso | Captura e reconhecimento em threads separadas | [63be90a](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/63be90a) | T02 (gravação de tela) |
+| F2 | Pessoa autorizada parada gerava log e bipe a cada 3 s | Um evento por chegada | [ddf48f7](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/ddf48f7) | T07: confirmado (parado diante da câmera, nenhuma linha nova por mais de 5 min) |
+| F3 | Rosto levemente de lado era negado ("DESCONHECIDO") | `LIMITE_DESVIO_NARIZ` calibrado de 0,3 para 0,2 | [ddf48f7](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/ddf48f7) | T05 |
+| F4 | Com duas pessoas, todos recebiam o resultado do primeiro (desconhecido aparecia como LIBERADO) | Só o maior rosto é verificado; os outros ficam cinza | [ddf48f7](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/ddf48f7) | T04: confirmado (o rosto de trás fica cinza, e o Gabriel atrás de um desconhecido não foi liberado) |
+| F5 | Instalação falhava em máquina limpa (o pip tentava compilar o `dlib`) | Instalação com `--no-deps` e versões fixas | [87abb42](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/87abb42) | T01: confirmado nos dois PCs, o `pip` instalou sem compilar nada |
+| F6 | Desconhecido não entrava no log (apontado pelo professor na Entrega 2) | Desconhecido registrado como NEGADO | [ddf48f7](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/ddf48f7) | T03: confirmado (linha `DESCONHECIDO,NEGADO` no log) |
+| F7 | O log guardava só a última pessoa; com duas se alternando, enchia de novo (apontado pelo professor) | Horário do último registro de cada pessoa e carência de 5 min (30 s para desconhecido) | [a8b851a](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/a8b851a) | T13, T07 e T14: confirmados (alternância, carência de 5 min e carência de 30 s do desconhecido) |
+| F8 | Foto de cadastro com duas pessoas autorizava a errada sem aviso (apontado pelo professor) | A auditoria avisa e usa o maior rosto | [ee6c6dd](https://github.com/leocosta-dev26/sistema-seguranca-facial/commit/ee6c6dd) | T15: confirmado (aviso exibido; só o maior rosto autoriza) |
 
 ---
 
@@ -183,7 +183,7 @@ Com a conversão por hardware desligada, **a imagem continuou verde**. Investiga
 3. O sistema reconheceu o Gabriel: `[EVENTO] AUTORIZADO: Gabriel (87.2%, distância 0.313)`.
 4. O log registrou uma linha: `05/11/2026,23:53:54,Gabriel,AUTORIZADO`.
 
-Evidências: [terminal](evidencias/T01-pc2-7-terminal-autorizado.png), com a janela da câmera ocultada porque mostra rosto. O print da janela com o rosto fica guardado com o responsável, fora do repositório (`evidencias-privadas/`).
+Evidências: [terminal](evidencias/T01-pc2-7-terminal-autorizado.png), com a janela da câmera ocultada porque mostra rosto. Print da janela da câmera: [janela com o Gabriel](evidencias-privadas-com-rosto/T01-pc2-8-janela-camera-COM-ROSTO.png).
 
 **Status:** **Passou** no PC 2, com o adaptador de teste. Seguindo o README à risca, sem adaptador, o T01 falhou nos dois PCs (P3 e P5).
 
@@ -193,7 +193,7 @@ Evidências: [terminal](evidencias/T01-pc2-7-terminal-autorizado.png), com a jan
 2. Gabriel de frente para a câmera (celular pelo DroidCam, 1280x720).
 3. **Tela:** moldura verde, "ACESSO LIBERADO" e "Gabriel (89%)", com a malha de pontos sobre o rosto.
 4. **Som:** dois bipes agudos, confirmados pelo testador.
-5. **Terminal:** `[EVENTO] AUTORIZADO: Gabriel (89.1%, distância 0.257)` ([print](evidencias/T02-terminal-autorizado.png)).
+5. **Terminal:** `[EVENTO] AUTORIZADO: Gabriel (89.1%, distância 0.257)` ([print](evidencias/T02-terminal-autorizado.png), [tela](evidencias-privadas-com-rosto/T02-acesso-liberado-COM-ROSTO.png)).
 6. **Log:** uma linha nova, `05/11/2026,23:56:36,Gabriel,AUTORIZADO`.
 
 **Percentuais medidos:** 87,2% (23:53) e 89,1% (23:56). Os dois ficam **acima** da faixa "76% a 85%" que o README afirma hoje (ver a seção 5 do guia: correções do README).
@@ -221,7 +221,7 @@ Gabriel diante da câmera, virando a cabeça devagar para um lado e depois para 
 
 **Conclusão:** para um lado, o comportamento é o esperado. Para o outro, a checagem de frente deixa passar um rosto quase de perfil, e o reconhecimento erra a pessoa (P6). A carência funcionou: as leituras repetidas do Gabriel não geraram linhas novas. Isso é um indício para o T07.
 
-**Evidências:** [terminal](evidencias/T05-terminal-leonardo-autorizado.png). Os 4 prints da janela (cinza, sem moldura, liberado e liberado como Leonardo) mostram o rosto e ficam fora do repositório, em `evidencias-privadas/`.
+**Evidências:** [terminal](evidencias/T05-terminal-leonardo-autorizado.png). Prints da janela: [olhe para a câmera](evidencias-privadas-com-rosto/T05-1-olhe-para-a-camera-COM-ROSTO.png), [de lado, sem moldura](evidencias-privadas-com-rosto/T05-2-de-lado-sem-moldura-COM-ROSTO.png), [perfil liberado](evidencias-privadas-com-rosto/T05-3-perfil-liberado-gabriel-COM-ROSTO.png) e [liberado como Leonardo](evidencias-privadas-com-rosto/T05-4-perfil-liberado-como-leonardo-COM-ROSTO.png).
 
 **Status:** Falhou (P6)
 
@@ -282,7 +282,7 @@ Evidência: [print](evidencias/T11-base-vazia.png).
 
 **Conclusão:** o resultado foi o esperado, e **confirma a limitação**: o sistema não tem prova de vida, e uma foto da pessoa cadastrada libera o acesso. A foto deu confiança **maior** (93,2%, distância 0.139) que o rosto real (85% a 89%, distância 0.26 a 0.37), porque é a mesma imagem usada no cadastro. Isso entra na seção "Limitações conhecidas" do README.
 
-Evidência: [terminal](evidencias/T06-terminal-foto-liberada.png). O print da tela com a foto fica fora do repositório, em `evidencias-privadas/`.
+Evidência: [terminal](evidencias/T06-terminal-foto-liberada.png). Print da tela: [foto no monitor liberada](evidencias-privadas-com-rosto/T06-foto-no-monitor-liberada-COM-ROSTO.png).
 
 **Status:** Passou (resultado esperado: confirma a falta de prova de vida)
 
@@ -396,7 +396,7 @@ Log: `06/11/2026,19:04:09,DESCONHECIDO,NEGADO`. **Confirma a correção F6:** o 
 | Gabriel perto + `pessoa_ia_1` longe | Gabriel: moldura verde, "ACESSO LIBERADO, Gabriel (94%)". Rosto de trás: cinza, "AGUARDE SUA VEZ" | `AUTORIZADO: Gabriel (94.2%, distância 0.109)` |
 | `pessoa_ia_1` perto + Gabriel longe | Rosto da frente: cartão vermelho, "DESCONHECIDO". Gabriel, atrás: cinza, "AGUARDE SUA VEZ" | `NEGADO: DESCONHECIDO (35.0%, distância 0.760)` |
 
-Log: `19:04:41,Gabriel,AUTORIZADO` e `19:04:53,DESCONHECIDO,NEGADO`. **Confirma a correção F4:** um desconhecido na frente não é liberado por causa de um cadastrado atrás, e o de trás nunca aparece como liberado. As telas mostram o rosto do Gabriel e ficam fora do repositório. **Status:** Passou
+Log: `19:04:41,Gabriel,AUTORIZADO` e `19:04:53,DESCONHECIDO,NEGADO`. **Confirma a correção F4:** um desconhecido na frente não é liberado por causa de um cadastrado atrás, e o de trás nunca aparece como liberado. Telas: [Gabriel perto](evidencias-privadas-com-rosto/T04-gabriel-perto-ia-longe-COM-ROSTO.jpg) e [rosto IA perto](evidencias-privadas-com-rosto/T04-ia-perto-gabriel-longe-COM-ROSTO.jpg). **Status:** Passou
 
 ### T14 | Dois desconhecidos seguidos
 

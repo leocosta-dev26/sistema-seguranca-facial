@@ -72,8 +72,8 @@ resultados testes/
 │   ├── testes_ia.py                  roteiro automático dos testes T03, T04, T14, T15 e T16
 │   ├── imagens/                      rostos gerados por IA (pessoas que não existem)
 │   └── resultados/T03 … T16/         terminal.txt, acessos.csv e prints da tela de cada teste
-├── scripts-de-apoio/                 scripts usados para preparar o ambiente e rodar os testes
-└── evidencias-privadas-com-rosto/    prints com o rosto do Gabriel (NÃO publicar)
+├── scripts-de-apoio/                 scripts de preparação do ambiente (não publicados; ficam com o Gabriel)
+└── evidencias-privadas-com-rosto/    prints com o rosto do Gabriel (publicados com a autorização dele)
 ```
 
 ### Os três jeitos de executar
@@ -101,10 +101,10 @@ Todos ficam **fora do repositório** e devem ser colocados na mesma pasta que co
 
 ## Privacidade
 
-- A pasta **`evidencias-privadas-com-rosto/`** tem prints em que aparece o rosto do Gabriel. **Ela não deve ir para o GitHub** nem ser compartilhada sem autorização.
+- A pasta `evidencias-privadas-com-rosto/` foi publicada com autorização do Gabriel, que aparece nos prints.
 - Nos prints de `evidencias/`, a janela da câmera foi tampada quando mostrava um rosto real.
 - Os rostos de `testes-automaticos-ia/` foram gerados por IA e não são de pessoas reais.
 
 ## Para levar ao repositório
 
-Copie para a pasta `docs/` do projeto: `testes.md`, `evidencias/` e `testes-automaticos-ia/`. **Não copie `evidencias-privadas-com-rosto/`.**
+Vão para a pasta `docs/` do projeto: `testes.md`, `LEIA-ME.md`, `evidencias/`, `testes-automaticos-ia/` e `evidencias-privadas-com-rosto/`. A pasta `evidencias-privadas-com-rosto/` foi publicada com autorização do Gabriel, que aparece nos prints.
