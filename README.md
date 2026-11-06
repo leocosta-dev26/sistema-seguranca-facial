@@ -165,7 +165,7 @@ Durante a fase de testes práticos da Entrega 3, documentamos os seguintes cená
 O uso de Inteligência Artificial generativa neste projeto ocorreu de forma pontual e focada. Utilizamos a ferramenta no início do desenvolvimento para auxiliar na ideação da estrutura modular inicial do projeto, consultamos esporadicamente no meio do processo para ultrapassar pequenos entraves sintáticos de integração com bibliotecas compiladas em C++, e, na fase final, utilizamos apenas para revisão textual e validação de documentação. Todo o planejamento arquitetural, calibração de histerese, isolamento de threads e resolução de gargalos de hardware foram executados e homologados integralmente pelos alunos.
 
 
-##Vídeo de demonstração do VisionGuard  
+## Vídeo de demonstração do VisionGuard  
 So copiar o link a seguir e colocar em uma aba vazia: https://drive.google.com/file/d/1uVah6KAVSw06vzCmwhbU8Kg6wbz26qNw/view?usp=drive_link
 
 ## Como cadastrar uma pessoa
