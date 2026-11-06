@@ -1,0 +1,22 @@
+[TESTE IA] T03: Pessoa desconhecida (rosto gerado por IA)
+[TESTE IA] Camera substituida por imagens (14 s de roteiro). Cadastros e log do teste em C:\Users\frost\Desktop\python\testes-ia\resultados\T03. O codigo do projeto nao foi alterado.
+============================================================
+   SISTEMA DE SEGURANÇA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 2 de 2 foto(s) com rosto detectado.
+[CADASTRO] Assinatura biométrica registrada: Gabriel
+[CADASTRO] Assinatura biométrica registrada: Leonardo
+[SUCESSO] 2 face(s) autorizada(s) carregada(s).
+[INICIANDO] Abrindo captura da webcam...
+
+[ROTEIRO] t=  0.0s  cena 1: ninguem
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROTEIRO] t=  3.0s  cena 2: pessoa_ia_1 de frente
+[EVENTO] NEGADO: DESCONHECIDO (34.9%, distância 0.761)
+[ROTEIRO] t= 11.1s  cena 3: ninguem

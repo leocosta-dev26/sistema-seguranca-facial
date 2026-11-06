@@ -1,0 +1,27 @@
+[TESTE IA] T15: Foto de cadastro com duas pessoas (Dupla.jpg, gerada por IA)
+[TESTE IA] Camera substituida por imagens (22 s de roteiro). Cadastros e log do teste em C:\Users\frost\Desktop\python\testes-ia\resultados\T15. O codigo do projeto nao foi alterado.
+============================================================
+   SISTEMA DE SEGURANÇA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 3 de 3 foto(s) com rosto detectado.
+[AUDITORIA] 2 rostos em Dupla.jpg. Usando o maior.
+[CADASTRO] Assinatura biométrica registrada: Dupla
+[CADASTRO] Assinatura biométrica registrada: Gabriel
+[CADASTRO] Assinatura biométrica registrada: Leonardo
+[SUCESSO] 3 face(s) autorizada(s) carregada(s).
+[INICIANDO] Abrindo captura da webcam...
+
+[ROTEIRO] t=  0.0s  cena 1: ninguem
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROTEIRO] t=  2.0s  cena 2: homem da Dupla (rosto maior na foto)
+[EVENTO] AUTORIZADO: Dupla (92.2%, distância 0.169)
+[ROTEIRO] t=  9.1s  cena 3: ninguem
+[ROTEIRO] t= 13.0s  cena 4: mulher da Dupla (rosto menor na foto)
+[EVENTO] NEGADO: DESCONHECIDO (35.6%, distância 0.753)
+[ROTEIRO] t= 20.0s  cena 5: ninguem

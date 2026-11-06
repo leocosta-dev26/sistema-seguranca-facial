@@ -1,0 +1,17 @@
+Diagnostico de camera - VisionGuard
+Data: 05/11/2026 23:46:10
+Python: 3.12.10
+
+Camera 0 | CAP_DSHOW | nao abriu
+Camera 1 | CAP_DSHOW | nao abriu
+Camera 2 | CAP_DSHOW | nao abriu
+Camera 3 | CAP_DSHOW | nao abriu
+Camera 4 | CAP_DSHOW | nao abriu
+
+Camera 0 | CAP_MSMF  | OK, imagem 640x480
+Camera 1 | CAP_MSMF  | nao abriu
+Camera 2 | CAP_MSMF  | nao abriu
+Camera 3 | CAP_MSMF  | nao abriu
+Camera 4 | CAP_MSMF  | nao abriu
+
+O VisionGuard usa a camera 0 com CAP_DSHOW.

@@ -1,0 +1,25 @@
+[TESTE IA] T04: Duas pessoas no quadro, uma mais perto
+[TESTE IA] Camera substituida por imagens (25 s de roteiro). Cadastros e log do teste em C:\Users\frost\Desktop\python\testes-ia\resultados\T04. O codigo do projeto nao foi alterado.
+============================================================
+   SISTEMA DE SEGURANÇA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 2 de 2 foto(s) com rosto detectado.
+[CADASTRO] Assinatura biométrica registrada: Gabriel
+[CADASTRO] Assinatura biométrica registrada: Leonardo
+[SUCESSO] 2 face(s) autorizada(s) carregada(s).
+[INICIANDO] Abrindo captura da webcam...
+
+[ROTEIRO] t=  0.0s  cena 1: ninguem
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROTEIRO] t=  3.0s  cena 2: Gabriel perto + pessoa_ia_1 longe
+[EVENTO] AUTORIZADO: Gabriel (94.2%, distância 0.109)
+[ROTEIRO] t= 11.2s  cena 3: ninguem
+[ROTEIRO] t= 15.0s  cena 4: pessoa_ia_1 perto + Gabriel longe
+[EVENTO] NEGADO: DESCONHECIDO (35.0%, distância 0.760)
+[ROTEIRO] t= 23.2s  cena 5: ninguem

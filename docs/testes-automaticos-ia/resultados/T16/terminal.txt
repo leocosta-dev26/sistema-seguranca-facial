@@ -1,0 +1,110 @@
+[TESTE IA] T16: Calibracao: distancias de 5 desconhecidos (rostos gerados por IA)
+[TESTE IA] Camera substituida por imagens (46 s de roteiro). Cadastros e log do teste em C:\Users\frost\Desktop\python\testes-ia\resultados\T16. O codigo do projeto nao foi alterado.
+============================================================
+   SISTEMA DE SEGURANÇA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 2 de 2 foto(s) com rosto detectado.
+[CADASTRO] Assinatura biométrica registrada: Gabriel
+[CADASTRO] Assinatura biométrica registrada: Leonardo
+[SUCESSO] 2 face(s) autorizada(s) carregada(s).
+[CALIBRAÇÃO] Modo calibração ligado: a distância de cada leitura aparece no terminal.
+[INICIANDO] Abrindo captura da webcam...
+
+[ROTEIRO] t=  0.0s  cena 1: ninguem
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROTEIRO] t=  2.0s  cena 2: pessoa_ia_1
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[EVENTO] NEGADO: DESCONHECIDO (34.9%, distância 0.761)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.761 até Leonardo (fora da tolerância 0.58)
+[ROTEIRO] t=  8.2s  cena 3: ninguem
+[ROTEIRO] t= 11.0s  cena 4: pessoa_ia_2
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CARÊNCIA] DESCONHECIDO já registrado há 9 s; sem novo registro no log.
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.708 até Gabriel (fora da tolerância 0.58)[ROTEIRO] t= 17.2s  cena 5: ninguem
+
+[ROTEIRO] t= 20.0s  cena 6: pessoa_ia_3
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CARÊNCIA] DESCONHECIDO já registrado há 18 s; sem novo registro no log.
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.744 até Gabriel (fora da tolerância 0.58)[ROTEIRO] t= 26.2s  cena 7: ninguem
+
+[ROTEIRO] t= 29.0s  cena 8: homem da Dupla
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CARÊNCIA] DESCONHECIDO já registrado há 27 s; sem novo registro no log.
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.825 até Leonardo (fora da tolerância 0.58)
+[ROTEIRO] t= 35.2s  cena 9: ninguem
+[ROTEIRO] t= 38.0s  cena 10: mulher da Dupla
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[EVENTO] NEGADO: DESCONHECIDO (21.5%, distância 0.922)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[CALIBRAÇÃO] distância 0.922 até Leonardo (fora da tolerância 0.58)
+[ROTEIRO] t= 44.2s  cena 11: ninguem
