@@ -5,13 +5,15 @@
 **Professor:** Prof. Dr. Roger Antunes  
 
 ## Equipe de Desenvolvimento
-* **Arthur** - RA: 2606317
-* **Caua Olaia Ferrari** - RA: 2603820
-* **Cesar Amarez Zotovicci** - RA: 2614117
-* **Gabriel Rodrigues do Santos Angioleto** - RA: 2601619
-* **Leonardo Gabriel de Lima Costa** - RA: 2527941
+| Integrante | RA | Papel |
+| :--- | :--- | :--- |
+| Arthur Cortez de Azevedo | 2606317 | Produto e Comercial |
+| Caua Olaia Ferrari | 2603820 | Desenvolvedor (módulo de cadastro e vídeo da demonstração) |
+| César Amarez Zotovici | 2614117 | Gestor de Projeto |
+| Gabriel Angioleto | 2601619 | Qualidade e Documentação |
+| Leonardo Gabriel de Lima Costa | 2527941 | Líder Técnico / Arquiteto |
 
----
+> Os papéis de Caua e Gabriel foram trocados em novembro em relação à Entrega 1, com o aceite do professor (ver `docs/atas/`).
 
 ## Visão Geral do Projeto
 O **VisionGuard** é um protótipo MVP (Produto Mínimo Viável) de controle de acesso físico baseado em biometria facial, desenvolvido em Python. O sistema monitora um fluxo de vídeo em tempo real, detecta rostos, mapeia traços anatômicos e valida a identidade contra uma base de dados local autorizada.
