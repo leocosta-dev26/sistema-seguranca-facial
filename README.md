@@ -104,8 +104,9 @@ O VisionGuard usa a biblioteca em dois módulos (`src/utilitarios.py` e `src/rec
 
 ### Pré-requisitos
 * Windows 10 ou 11 (o sistema usa o DirectShow para a webcam e o `winsound` para os alertas sonoros).
-* Python 3.12.
-* Webcam.
+* Python 3.12. Confira com `py -3.12 --version`, que deve mostrar `Python 3.12.x`. Com outra versão, o programa pode fechar sem nenhuma mensagem (problema P1 em `docs/testes.md`).
+* Processador com suporte a AVX. O `dlib-bin` vem compilado com essas instruções; sem elas (por exemplo, no Intel Celeron N4000), o programa fecha sem mensagem ao carregar o `dlib` (P3).
+* Webcam que funcione pelo DirectShow. Câmeras que só funcionam pelo Media Foundation, como o celular usado como webcam pelo DroidCam, não abrem (P5).
 
 Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, que já vem compilado.
 
@@ -123,6 +124,7 @@ Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, q
    .\venv\Scripts\Activate.ps1
    ```
    Se o PowerShell bloquear a ativação, rode antes `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+   No Prompt de Comando (cmd), a ativação é `venv\Scripts\activate` (P2).
 
 3. **Instalar as dependências:**
    ```powershell
@@ -174,6 +176,7 @@ Pressione `q` com a janela da câmera selecionada, ou feche a janela pelo X.
 | O sistema só roda no Windows (`cv2.CAP_DSHOW` e `winsound`) | Apresentar no notebook do Leonardo, já instalado e testado |
 | A webcam ou a demonstração ao vivo falhar | Vídeo da demonstração gravado com antecedência, com cópia offline |
 | A instalação falhar numa máquina nova | Ambiente instalado e testado antes da apresentação; instalação com `pip install --no-deps -r requirements.txt` |
+| A máquina da apresentação não ter processador com AVX ou ter uma webcam que não abre pelo DirectShow | Apresentar no notebook do Leonardo, onde o sistema já foi testado |
 | Pouca luz na sala | Posicionar a câmera de frente para a luz; resultado do teste de iluminação registrado nos casos de teste |
 
 ## Casos de Teste e Resolução de Falhas Críticas
@@ -212,7 +215,22 @@ Cada item foi confirmado nos testes. Os detalhes e as evidências estão em [`do
 
 ## Declaração de Uso de Ferramentas de IA
 
-O uso de Inteligência Artificial generativa neste projeto ocorreu de forma pontual e focada. Utilizamos a ferramenta no início do desenvolvimento para auxiliar na ideação da estrutura modular inicial do projeto, consultamos esporadicamente no meio do processo para ultrapassar pequenos entraves sintáticos de integração com bibliotecas compiladas em C++, e, na fase final, utilizamos apenas para revisão textual e validação de documentação. Todo o planejamento arquitetural, calibração de histerese, isolamento de threads e resolução de gargalos de hardware foram executados e homologados integralmente pelos alunos.
+O grupo usou ferramentas de IA generativa em várias etapas do projeto. A tabela abaixo registra onde, por quem e para quê.
+
+| Período | Ferramenta | Quem usou | Para quê |
+| :--- | :--- | :--- | :--- |
+| Entrega 1 (setembro) | Gemini | Grupo | Estruturar o escopo do projeto, o escopo negativo e a divisão dos papéis |
+| Desenvolvimento até a Entrega 2 | Gemini | Gabriel | Iniciar o desenvolvimento do protótipo |
+| Desenvolvimento até 03/11 (commit `63be90a`) | Gemini | Leonardo | Apoiar o desenvolvimento do código e da documentação da versão de 03/11 |
+| Revisão final (03/11 a 06/11) | Claude (Anthropic) | Leonardo | Revisar o código e a documentação; identificar bugs (todos os rostos recebiam o resultado do primeiro, a checagem de rosto de frente não verificava nada, a auditoria em lote ignorava o resultado, logs repetidos a cada 3 s e falha na instalação em máquina limpa); escrever as correções, a carência por pessoa no log e o modo de calibração; testar a instalação num ambiente limpo; escrever as seções técnicas do README |
+| Organização do grupo (03/11 a 06/11) | Claude (Anthropic) | Leonardo | Preparar os guias de cada papel, o roteiro do vídeo e o guia de estudo do reconhecedor; redigir os rascunhos das atas, dos textos do formulário e desta declaração |
+| Testes (05/11 a 06/11) | Nano Banana (gerador de imagens do Google Gemini) | Gabriel | Gerar rostos de pessoas que não existem, para os testes automáticos sem usar o rosto de ninguém |
+| Testes (05/11 a 06/11) | Claude (Anthropic) | Gabriel | Ferramenta de apoio na escrita do script `testes_ia.py` e do documento `docs/testes.md`. Os testes foram planejados, executados e conferidos pelo Gabriel |
+| Seção "Para quem é" | ChatGPT e pesquisa no Google | Arthur | Pesquisar e estruturar o texto da seção |
+
+O Caua e o César não usaram ferramentas de IA diretamente. As partes deles partiram dos guias e rascunhos preparados pelo Leonardo com o Claude (linha "Organização do grupo").
+
+**O que foi feito pelos integrantes:** o Leonardo revisou, testou com a webcam e enviou todas as alterações do código, e fez a calibração final do limite de rosto de lado (de 0,3 para 0,2). O Gabriel executou os testes em dois computadores e registrou os resultados e as evidências. O Arthur escreveu a seção "Para quem é". O Caua gravou o vídeo da demonstração e escreveu a seção "Como cadastrar uma pessoa". O César revisou e enviou as atas e a tabela de papéis.
 
 ---
 ## Vídeo de demonstração do VisionGuard  
