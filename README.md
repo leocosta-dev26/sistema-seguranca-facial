@@ -216,7 +216,7 @@ O uso de Inteligência Artificial generativa neste projeto ocorreu de forma pont
 
 ---
 ## Vídeo de demonstração do VisionGuard  
-So copiar o link a seguir e colocar em uma aba vazia: https://drive.google.com/file/d/1uVah6KAVSw06vzCmwhbU8Kg6wbz26qNw/view?usp=drive_link
+Assista à demonstração: [vídeo no Google Drive](https://drive.google.com/file/d/1uVah6KAVSw06vzCmwhbU8Kg6wbz26qNw/view?usp=drive_link)
 
 ---
 ## Como cadastrar uma pessoa
@@ -233,9 +233,9 @@ Para autorizar uma pessoa no sistema, basta colocar uma foto do rosto dela na pa
 * só uma pessoa na foto.
 
 **Mensagens na inicialização:**
-* `[AUDITORIA]`: o sistema confere, em lote, se cada foto da pasta tem um rosto.
+* `[AUDITORIA]`: o sistema confere, em lote, se cada foto da pasta tem um rosto. Também avisa quando a foto tem mais de um rosto (usa o maior) ou quando não achou rosto na primeira tentativa (tenta de novo com outro detector).
 * `[CADASTRO]`: mostra o nome da pessoa que está sendo cadastrada. Quando termina bem, aparece `[SUCESSO]`.
-* `[AVISO]`: algo na foto merece atenção. Por exemplo, a foto tem mais de um rosto (o sistema usa o maior) ou não tem rosto (a foto é ignorada).
+* `[AVISO]`: nenhum rosto foi encontrado na foto, nem na segunda tentativa. A foto é ignorada.
 
 **Atenção:** depois de adicionar uma foto nova, é preciso **reiniciar o sistema** (`python main.py`) para ela valer. As fotos só são lidas na inicialização, e cada foto leva cerca de 10 segundos.
 
