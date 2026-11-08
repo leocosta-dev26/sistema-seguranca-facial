@@ -11,22 +11,48 @@ from src.utilitarios import registrar_log, area_do_rosto
 LIMITE_INCLINACAO = 0.3     # desnível máximo entre os olhos, relativo à distância entre eles
 LIMITE_DESVIO_NARIZ = 0.2   # quanto o nariz pode se afastar do ponto médio entre os olhos
 
+# O detector HOG da face_recognition tem 5 filtros: 0 = de frente, 1 e 2 = de perfil,
+# 3 e 4 = de frente, inclinado. Rosto encontrado por um filtro de perfil está de lado.
+FILTROS_DE_FRENTE = (0, 3, 4)
+
+# Rosto a menos de 3% da borda do quadro está cortado (entrando ou saindo) e não é verificado
+MARGEM_BORDA = 0.03
+
 COR_NEUTRA = (160, 160, 160)
 
 
 class ThreadedCamera:
     """Captura quadros da webcam continuamente em segundo plano para eliminar a latência."""
     def __init__(self, src=0):
-        self.cap = cv2.VideoCapture(src, cv2.CAP_DSHOW)
-        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-        self.sucesso, self.frame = self.cap.read()
+        self.cap, self.backend = self._abrir(src)
+        self.sucesso, self.frame = (self.cap.read() if self.cap is not None else (False, None))
         self.rodando = True
         self.thread = threading.Thread(target=self._atualizar, daemon=True)
         self.thread.start()
 
+    @staticmethod
+    def _abrir(src):
+        """Tenta o DirectShow; se ele não entregar imagem, tenta o Media Foundation."""
+        tentativas = [
+            ("DirectShow", cv2.CAP_DSHOW, None),
+            # Câmeras virtuais como o DroidCam só abrem pelo Media Foundation, e só em 1280x720
+            ("Media Foundation", cv2.CAP_MSMF, (1280, 720)),
+        ]
+        for nome, backend, resolucao in tentativas:
+            cap = cv2.VideoCapture(src, backend)
+            if resolucao:
+                cap.set(cv2.CAP_PROP_FRAME_WIDTH, resolucao[0])
+                cap.set(cv2.CAP_PROP_FRAME_HEIGHT, resolucao[1])
+            cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            # Algumas câmeras só entregam imagem depois de algumas leituras
+            if cap.isOpened() and any(cap.read()[0] for _ in range(10)):
+                return cap, nome
+            cap.release()
+        return None, None
+
     def _atualizar(self):
         while self.rodando:
-            if self.cap.isOpened():
+            if self.cap is not None and self.cap.isOpened():
                 sucesso, frame = self.cap.read()
                 if sucesso:
                     self.sucesso = sucesso
@@ -40,7 +66,7 @@ class ThreadedCamera:
         self.rodando = False
         # Espera a thread de captura terminar antes de liberar a câmera
         self.thread.join(timeout=1.0)
-        if self.cap.isOpened():
+        if self.cap is not None and self.cap.isOpened():
             self.cap.release()
 
 
@@ -62,7 +88,8 @@ class ReconhecedorAssincrono:
         self.candidato_nome = "DESCONHECIDO"
         self.candidato_autorizado = False
         self.contagem_consistencia = 0
-        self.LIMIAR_CONGRUENCIA = 2  # Exige pelo menos 2 leituras idênticas para comutar de estado
+        self.LIMIAR_CONGRUENCIA = 2   # Leituras idênticas seguidas para liberar o acesso
+        self.LEITURAS_PARA_NEGAR = 3  # Para negar, uma a mais: evita "desconhecido" falso com o rosto em movimento
 
         # Regras do registro: um evento por chegada e carência por pessoa
         self.ultimo_evento_disparado = None  # Quem está diante da câmera desde o último evento
@@ -119,7 +146,9 @@ class ReconhecedorAssincrono:
                         self.contagem_consistencia = 1
 
                     # Comuta o estado apenas quando comprovada estabilidade temporal
-                    if self.contagem_consistencia >= self.LIMIAR_CONGRUENCIA:
+                    necessarias = (self.LIMIAR_CONGRUENCIA if self.candidato_autorizado
+                                   else self.LEITURAS_PARA_NEGAR)
+                    if self.contagem_consistencia >= necessarias:
                         self.ultimo_reconhecido = self.candidato_nome
                         self.ultimo_status_autorizado = self.candidato_autorizado
                         self.ultima_confianca = confianca_instantanea
@@ -192,12 +221,44 @@ def calcular_confianca(distancia, limiar=0.58):
     return round(max(10.0, min(99.0, confianca)), 1)
 
 
+def filtro_que_detectou(rgb_pequeno, local_face):
+    """
+    Descobre qual dos 5 filtros do detector HOG da face_recognition encontrou o rosto.
+    Roda o detector só num recorte em volta do rosto, para não repetir a busca no quadro inteiro.
+    """
+    topo, direita, baixo, esquerda = local_face
+    altura, largura = rgb_pequeno.shape[:2]
+    folga = (baixo - topo) // 2
+    recorte = np.ascontiguousarray(rgb_pequeno[
+        max(0, topo - folga):min(altura, baixo + folga),
+        max(0, esquerda - folga):min(largura, direita + folga),
+    ])
+    retangulos, _, filtros = face_recognition.api.face_detector.run(recorte, 1, 0)
+    if len(retangulos) == 0:
+        return None
+    maior = max(range(len(retangulos)), key=lambda i: retangulos[i].area())
+    return int(filtros[maior])
+
+
+def rosto_na_borda(rgb_pequeno, local_face):
+    """Rosto encostado na borda do quadro está cortado, entrando ou saindo, e não é verificado."""
+    topo, direita, baixo, esquerda = local_face
+    altura, largura = rgb_pequeno.shape[:2]
+    margem_x, margem_y = largura * MARGEM_BORDA, altura * MARGEM_BORDA
+    return (esquerda < margem_x or topo < margem_y
+            or direita > largura - margem_x or baixo > altura - margem_y)
+
+
 def verificar_enquadramento_frontal(rgb_pequeno, local_face):
     """
     RECURSO 5: face_recognition.face_landmarks com model='small'
-    Usa os 5 marcos (cantos dos olhos e base do nariz) para recusar rostos
-    inclinados ou de perfil antes da inferência pesada.
+    Recusa rostos de perfil (pelo filtro do detector que os encontrou) e, com os
+    5 marcos (cantos dos olhos e base do nariz), rostos inclinados ou virados.
     """
+    # De perfil, os 5 marcos ficam imprecisos; o filtro do detector é mais confiável
+    if filtro_que_detectou(rgb_pequeno, local_face) not in FILTROS_DE_FRENTE:
+        return False
+
     marcos_5 = face_recognition.face_landmarks(rgb_pequeno, [local_face], model="small")
     if not marcos_5:
         return False
@@ -306,8 +367,10 @@ def desenhar_badge_identificacao(frame, x1, y1, x2, y2, nome, autorizado, confia
     cv2.rectangle(frame, (pos_x, pos_y), (pos_x + largura_badge, pos_y + altura_badge), cor_borda, 1)
 
     status_txt = "ACESSO LIBERADO" if autorizado else "ACESSO NEGADO"
+    # Título em branco no cartão vermelho: vermelho sobre vermelho ficava ilegível
+    cor_titulo = cor_borda if autorizado else (255, 255, 255)
     cv2.putText(frame, status_txt, (pos_x + 8, pos_y + 20),
-                cv2.FONT_HERSHEY_DUPLEX, 0.48, cor_borda, 1)
+                cv2.FONT_HERSHEY_DUPLEX, 0.48, cor_titulo, 1)
 
     subtexto = f"{nome} ({confianca:.0f}%)" if autorizado else "DESCONHECIDO"
     cv2.putText(frame, subtexto, (pos_x + 8, pos_y + 38),
@@ -315,15 +378,19 @@ def desenhar_badge_identificacao(frame, x1, y1, x2, y2, nome, autorizado, confia
 
 
 def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=False):
-    """Laço principal de monitoramento com pipeline assíncrono e estabilidade temporal."""
+    """
+    Laço principal de monitoramento com pipeline assíncrono e estabilidade temporal.
+    Retorna False se a webcam não abrir, para o main.py encerrar com código de erro.
+    """
     nome_janela = "VisionGuard - Controle de Acesso Facial"
 
     camera = ThreadedCamera(0)
     if not camera.sucesso:
-        print("[ERRO] Falha ao conectar a webcam via DirectShow.")
+        print("[ERRO] Falha ao conectar a webcam (DirectShow e Media Foundation).")
         camera.liberar()
-        return
+        return False
 
+    print(f"[CÂMERA] Webcam aberta pelo {camera.backend}.")
     cv2.namedWindow(nome_janela, cv2.WINDOW_NORMAL)
 
     print("\n[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.")
@@ -336,6 +403,7 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=Fals
     contador_quadros = 0
     locais_faces = []
     local_principal = None
+    rosto_cortado = False
     frontal_ok = False
     marcos_faciais = {}
     tempo_ultimo_rosto = time.time()
@@ -361,8 +429,11 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=Fals
                 # Só o rosto mais próximo da câmera (o maior) é verificado
                 local_principal = max(locais_faces, key=area_do_rosto)
 
-                # RECURSO 5: face_landmarks com model="small" recusa rostos inclinados ou de perfil
-                frontal_ok = verificar_enquadramento_frontal(rgb_pequeno, local_principal)
+                # Rosto cortado na borda não é verificado; o de perfil ou inclinado também não
+                # (RECURSO 5: face_landmarks com model="small")
+                rosto_cortado = rosto_na_borda(rgb_pequeno, local_principal)
+                frontal_ok = (not rosto_cortado
+                              and verificar_enquadramento_frontal(rgb_pequeno, local_principal))
 
                 # RECURSO 6: face_landmarks com model="large" extrai os 68 marcos da malha do HUD
                 marcos_faciais = extrair_malha_biometrica(rgb_pequeno, local_principal)
@@ -385,6 +456,10 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=Fals
             # Os demais rostos não foram verificados e nunca aparecem como liberados
             if local != local_principal:
                 desenhar_rotulo_neutro(frame, x1, y1, x2, y2, "AGUARDE SUA VEZ")
+                continue
+
+            if rosto_cortado:
+                desenhar_rotulo_neutro(frame, x1, y1, x2, y2, "CENTRALIZE O ROSTO")
                 continue
 
             if not frontal_ok:
@@ -417,3 +492,4 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=Fals
 
     camera.liberar()
     cv2.destroyAllWindows()
+    return True
