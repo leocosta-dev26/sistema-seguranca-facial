@@ -39,8 +39,8 @@ O projeto utiliza um padrão modular limpo (`src/utilitarios.py` e `src/reconhec
 
 * **Thread de Captura:** O OpenCV lê o hardware da câmera continuamente em background para esvaziar o buffer do Windows (`ThreadedCamera`).
 * **Auditoria Prévia:** Ao inicializar, o sistema localiza em lote, com o detector CNN, o rosto de cada foto de cadastro (`batch_face_locations`). A assinatura biométrica é gerada a partir do rosto encontrado; se o CNN não achar rosto numa foto, o sistema tenta o detector HOG antes de descartá-la.
-* **Pipeline de Detecção:** Detecção via HOG a cada 2 quadros. Quando há várias pessoas, só o rosto mais próximo da câmera (o maior) é verificado; os demais aparecem em cinza com o aviso "AGUARDE SUA VEZ". Antes do reconhecimento, o sistema confere se o rosto está de frente (olhos nivelados e nariz centralizado) e desenha a malha biométrica de 68 pontos no HUD.
-* **Histerese e Logs:** Estabilizador temporal (*debounce*) calibrado a uma tolerância euclidiana de `0.58`. O sistema exige 2 leituras congruentes para alterar o estado de acesso, evitando falsos negativos por oscilação de luz, e registra os acessos no arquivo `data/logs/acessos.csv` seguindo as regras da seção "Regras do Registro".
+* **Pipeline de Detecção:** Detecção via HOG a cada 2 quadros. Quando há várias pessoas, só o rosto mais próximo da câmera (o maior) é verificado; os demais aparecem em cinza com o aviso "AGUARDE SUA VEZ". Antes do reconhecimento, o sistema confere se o rosto está de frente: recusa o rosto que o detector HOG encontrou com um dos seus filtros de perfil, o rosto inclinado ou virado (olhos desnivelados ou nariz fora do centro) e o rosto cortado na borda do quadro. Depois de qualquer uma dessas situações, espera 1 segundo com o rosto de frente antes de verificar. A busca de rostos usa o quadro reduzido a 1/4, mas a assinatura do rosto é calculada no quadro inteiro, para mais precisão. O HUD desenha a malha biométrica de 68 pontos.
+* **Histerese e Logs:** tolerância euclidiana de `0.58`. Para liberar, o sistema exige 2 leituras iguais seguidas; para negar, o "desconhecido" precisa se manter por 2 segundos, o que evita negações falsas enquanto a pessoa se mexe. Os acessos vão para `data/logs/acessos.csv`, seguindo as regras da seção "Regras do Registro".
 
 ### Como os dados andam
 
@@ -55,7 +55,7 @@ flowchart LR
         E["Webcam<br/>thread de captura"] --> F["face_locations (HOG)<br/>a cada 2 quadros"]
         F --> G{"Rosto de frente?<br/>face_landmarks small"}
         G -->|não| H["OLHE PARA A CAMERA"]
-        G -->|sim| I["face_encodings<br/>em outra thread"]
+        G -->|sim| I["face_encodings no quadro inteiro<br/>em outra thread"]
         I --> J["face_distance +<br/>compare_faces (0.58)"]
         J --> K{"2 leituras iguais?"}
         K -->|sim| L["Tela com malha (face_landmarks large)<br/>e som"]
@@ -75,7 +75,7 @@ O `data/logs/acessos.csv` tem uma linha por evento, com Data, Hora, Nome e Statu
 | A mesma pessoa volta em menos de 5 minutos | O som toca, mas não há linha nova no log (carência) |
 | A mesma pessoa volta depois de 5 minutos | Novo registro |
 | Duas pessoas se alternando na frente da câmera | Cada uma é registrada no máximo uma vez a cada 5 minutos |
-| Pessoa desconhecida | Registrada como `DESCONHECIDO` / `NEGADO`, com carência de 30 segundos, porque todos os estranhos compartilham o mesmo nome |
+| Pessoa desconhecida | Negada depois de 2 segundos diante da câmera e registrada como `DESCONHECIDO` / `NEGADO`, com carência de 30 segundos, porque todos os estranhos compartilham o mesmo nome |
 | Ninguém na câmera por 2 segundos | O sistema considera que a pessoa saiu; a próxima aparição conta como nova chegada |
 
 O sistema não distingue entrada de saída: cada chegada diante da câmera conta como um evento. Os tempos de carência ficam em `src/reconhecedor.py` (`CARENCIA_AUTORIZADO` e `CARENCIA_DESCONHECIDO`).
@@ -106,7 +106,7 @@ O VisionGuard usa a biblioteca em dois módulos (`src/utilitarios.py` e `src/rec
 * Windows 10 ou 11 (o sistema usa o DirectShow para a webcam e o `winsound` para os alertas sonoros).
 * Python 3.12. Confira com `py -3.12 --version`, que deve mostrar `Python 3.12.x`. Com outra versão, o programa pode fechar sem nenhuma mensagem (problema P1 em `docs/testes.md`).
 * Processador com suporte a AVX. O `dlib-bin` vem compilado com essas instruções; sem elas (por exemplo, no Intel Celeron N4000), o programa fecha sem mensagem ao carregar o `dlib` (P3).
-* Webcam que funcione pelo DirectShow. Câmeras que só funcionam pelo Media Foundation, como o celular usado como webcam pelo DroidCam, não abrem (P5).
+* Webcam. O sistema abre a câmera pelo DirectShow e, se ele falhar, tenta o Media Foundation em 1280x720, o caminho usado por câmeras como o celular pelo DroidCam (P5). Até agora, esse segundo caminho só foi testado com um adaptador; o reteste está pendente.
 
 Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, que já vem compilado.
 
@@ -153,8 +153,10 @@ Com o sistema aberto (`python main.py`), a janela **"VisionGuard - Controle de A
 | Pessoa desconhecida | Moldura **vermelha** e o cartão "ACESSO NEGADO" / "DESCONHECIDO" | Um bipe grave e longo |
 | Rosto de lado ou inclinado | Moldura **cinza** com "OLHE PARA A CAMERA" (o rosto não é verificado) | Nenhum |
 | Outras pessoas no quadro | Moldura **cinza** com "AGUARDE SUA VEZ": só o rosto mais próximo da câmera é verificado | Nenhum |
+| Rosto encostado na borda da imagem | Moldura **cinza** com "CENTRALIZE O ROSTO" (o rosto não é verificado) | Nenhum |
+| Sistema ainda decidindo | Moldura **cinza** com "VERIFICANDO..." | Nenhum |
 
-O resultado só muda depois de **duas leituras iguais seguidas**, por isso leva um instante para aparecer.
+O sistema só decide depois que o rosto fica 1 segundo de frente e estável. Para liberar, exige duas leituras iguais seguidas; para negar, o "desconhecido" precisa se manter por 2 segundos. Por isso aparece "VERIFICANDO..." por um instante antes do resultado.
 
 ### O registro (log)
 
@@ -164,6 +166,8 @@ Cada chegada diante da câmera gera uma linha em `data/logs/acessos.csv`, com Da
 
 * `[EVENTO] AUTORIZADO: Nome (88.2%, distância 0.283)` ou `[EVENTO] NEGADO: DESCONHECIDO (...)`: um registro novo no log.
 * `[CARÊNCIA] Nome já registrado há 47 s; sem novo registro no log.`: a pessoa voltou antes do fim da carência.
+* `[CÂMERA] Webcam aberta pelo DirectShow.`: por qual caminho a câmera foi aberta.
+* Só com `--calibrar`: `[CALIBRAÇÃO]` mostra a distância de cada leitura, e `[ROSTO]` mostra as medidas da checagem de rosto de frente (filtro do detector, inclinação e posição do nariz).
 
 ### Encerrar
 
@@ -176,14 +180,14 @@ Pressione `q` com a janela da câmera selecionada, ou feche a janela pelo X.
 | O sistema só roda no Windows (`cv2.CAP_DSHOW` e `winsound`) | Apresentar no notebook do Leonardo, já instalado e testado |
 | A webcam ou a demonstração ao vivo falhar | Vídeo da demonstração gravado com antecedência, com cópia offline |
 | A instalação falhar numa máquina nova | Ambiente instalado e testado antes da apresentação; instalação com `pip install --no-deps -r requirements.txt` |
-| A máquina da apresentação não ter processador com AVX ou ter uma webcam que não abre pelo DirectShow | Apresentar no notebook do Leonardo, onde o sistema já foi testado |
+| A máquina da apresentação não ter processador com AVX ou ter uma webcam que o sistema não consiga abrir | Apresentar no notebook do Leonardo, onde o sistema já foi testado |
 | Pouca luz na sala | Posicionar a câmera de frente para a luz; resultado do teste de iluminação registrado nos casos de teste |
 
 ## Casos de Teste e Resolução de Falhas Críticas
 
 Durante a fase de testes práticos da Entrega 3, documentamos os seguintes cenários:
 
-1. **Teste de Sucesso (Condições Normais):** Identificação estabilizada entre 85% e 89% de confiança com o rosto real de frente (medido nos testes T02, T07, T10, T12 e T13), com dois bipes agudos e registro de status "AUTORIZADO" no CSV. Transição para "DESCONHECIDO" após duas leituras consecutivas, com bipe grave, ao captar uma face não cadastrada (T03).
+1. **Teste de Sucesso (Condições Normais):** Identificação estabilizada entre 85% e 89% de confiança com o rosto real de frente (medido nos testes T02, T07, T10, T12 e T13), com dois bipes agudos e registro de status "AUTORIZADO" no CSV. Negação ("DESCONHECIDO", com bipe grave) ao captar uma face não cadastrada (T03); depois das correções de 08/11, a negação só acontece quando o desconhecido se mantém por 2 segundos.
 2. **Registro de Falha e Contingência (Latência de Vídeo):**
 * **O Problema:** Na primeira iteração, a execução síncrona da inferência pesada (`face_encodings`) a cada quadro bloqueava a CPU, acumulando quadros na fila do driver e gerando um atraso de 1,5 a 2 segundos na imagem da câmera.
 * **A Solução Aplicada:** Refatoramos a arquitetura para **Multithreading Assíncrono**. A câmera passou a ser consumida em tempo real por uma thread paralela dedicada (`ThreadedCamera`), enquanto a inferência pesada roda em segundo plano disparada apenas com enquadramento frontal validado. O atraso foi eliminado, e a imagem passou a acompanhar a câmera sem atraso perceptível.
@@ -200,12 +204,12 @@ A tabela completa dos 16 casos de teste, com as evidências de cada um, está em
 Cada item foi confirmado nos testes. Os detalhes e as evidências estão em [`docs/testes.md`](docs/testes.md).
 
 * **Exige processador com suporte a AVX.** O `dlib-bin` vem compilado com instruções AVX. Num processador sem AVX (por exemplo, o Intel Celeron N4000), o programa fecha sem nenhuma mensagem ao carregar o `dlib` (T01).
-* **Só funciona no Windows** (usa o DirectShow e o `winsound`), e a câmera só é aberta pelo DirectShow. Câmeras que só funcionam pelo Media Foundation, como o celular usado como webcam pelo DroidCam, não abrem (T01).
+* **Só funciona no Windows** (usa o DirectShow, o Media Foundation e o `winsound`). A abertura pelo Media Foundation, para câmeras como o DroidCam, ainda precisa ser retestada sem o adaptador (P5).
 * **Não há prova de vida:** uma foto da pessoa cadastrada mostrada à câmera libera o acesso, com confiança até maior que a do rosto real (93% contra 85% a 89%) (T06).
 * **Alcance de cerca de 1 metro.** Mais longe, o rosto não é detectado (T09). O desempenho com pouca luz ainda não foi medido (T08).
 * **Verifica uma pessoa por vez:** só o rosto mais próximo da câmera; os outros ficam em cinza com "AGUARDE SUA VEZ" (T04).
-* **Rosto de lado:** para um dos lados, o sistema pede para olhar para a câmera, como esperado. Para o outro, um rosto quase de perfil passou pela checagem de frente e foi confundido com outra pessoa cadastrada (T05). O problema está registrado como P6 em `docs/testes.md`.
-* **Entrar ou sair do quadro** pode gerar uma leitura falsa de "DESCONHECIDO" para uma pessoa cadastrada, com bipe grave e linha `NEGADO` no log (T07).
+* **Rosto de lado:** nos testes, um rosto quase de perfil passou pela checagem de frente e foi confundido com outra pessoa cadastrada (P6). A checagem passou a usar o filtro de perfil do detector, e no reteste com uma pessoa cadastrada os dois lados foram barrados. Falta repetir com duas pessoas cadastradas.
+* **Leituras falsas de "DESCONHECIDO":** ao entrar, sair ou virar o rosto, a pessoa cadastrada chegou a ser negada (P7). Com a assinatura no quadro inteiro, a espera de 1 s e a negação só depois de 2 s, os casos caíram de vários por teste para raros, mas ainda podem acontecer. Uma foto de cadastro tirada pela própria webcam deve ajudar.
 * **Todos os desconhecidos têm o mesmo nome** ("DESCONHECIDO"). Por isso, um segundo estranho que chega menos de 30 segundos depois do primeiro não é registrado (T14).
 * **O percentual exibido não é uma probabilidade.** É uma escala calculada a partir da distância entre os rostos: uma pessoa autorizada aparece sempre entre 78% e 98%.
 * **As fotos de cadastro só são lidas na inicialização**, e cada foto deixa o início mais lento, por causa da auditoria com o detector CNN no processador.
@@ -223,6 +227,7 @@ O grupo usou ferramentas de IA generativa em várias etapas do projeto. A tabela
 | Desenvolvimento até a Entrega 2 | Gemini | Gabriel | Iniciar o desenvolvimento do protótipo |
 | Desenvolvimento até 03/11 (commit `63be90a`) | Gemini | Leonardo | Apoiar o desenvolvimento do código e da documentação da versão de 03/11 |
 | Revisão final (03/11 a 06/11) | Claude (Anthropic) | Leonardo | Revisar o código e a documentação; identificar bugs (todos os rostos recebiam o resultado do primeiro, a checagem de rosto de frente não verificava nada, a auditoria em lote ignorava o resultado, logs repetidos a cada 3 s e falha na instalação em máquina limpa); escrever as correções, a carência por pessoa no log e o modo de calibração; testar a instalação num ambiente limpo; escrever as seções técnicas do README |
+| Correções para a apresentação (06/11 a 08/11) | Claude (Anthropic) | Leonardo | Corrigir os problemas encontrados pelo Gabriel nos testes (P4 a P8): filtro de perfil do detector, rosto na borda, assinatura no quadro inteiro, negação só depois de 2 s, aviso "VERIFICANDO...", abertura da câmera pelo Media Foundation e diagnóstico no `--calibrar`; atualizar o README e o guia de estudo; preparar o roteiro da apresentação. Os testes ao vivo e a calibração foram feitos pelo Leonardo |
 | Organização do grupo (03/11 a 06/11) | Claude (Anthropic) | Leonardo | Preparar os guias de cada papel, o roteiro do vídeo e o guia de estudo do reconhecedor; redigir os rascunhos das atas, dos textos do formulário e desta declaração |
 | Testes (05/11 a 06/11) | Nano Banana (gerador de imagens do Google Gemini) | Gabriel | Gerar rostos de pessoas que não existem, para os testes automáticos sem usar o rosto de ninguém |
 | Testes (05/11 a 06/11) | Claude (Anthropic) | Gabriel | Ferramenta de apoio na escrita do script `testes_ia.py` e do documento `docs/testes.md`. Os testes foram planejados, executados e conferidos pelo Gabriel |

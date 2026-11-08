@@ -27,7 +27,9 @@ def main():
 
     print("[INICIANDO] Abrindo captura da webcam...\n")
 
-    iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=calibrar)
+    # Sem webcam, encerra com código 1 (erro), e não 0, como se tivesse dado certo
+    if not iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=calibrar):
+        sys.exit(1)
 
 
 if __name__ == "__main__":
