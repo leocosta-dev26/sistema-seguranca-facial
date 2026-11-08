@@ -321,8 +321,12 @@ def desenhar_cantos_estilizados(imagem, x1, y1, x2, y2, cor, espessura=2, compri
 def desenhar_rotulo_neutro(frame, x1, y1, x2, y2, texto):
     """Moldura cinza com um aviso, para rostos que não estão sendo verificados."""
     desenhar_cantos_estilizados(frame, x1, y1, x2, y2, COR_NEUTRA)
+    largura_frame = frame.shape[1]
+    (largura_txt, _), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_DUPLEX, 0.5, 1)
+    # Mantém o aviso inteiro dentro da tela, mesmo com o rosto encostado na borda
+    pos_x = min(max(10, x1), largura_frame - largura_txt - 10)
     pos_y = max(55, y1 - 10)
-    cv2.putText(frame, texto, (x1, pos_y), cv2.FONT_HERSHEY_DUPLEX, 0.5, COR_NEUTRA, 1)
+    cv2.putText(frame, texto, (pos_x, pos_y), cv2.FONT_HERSHEY_DUPLEX, 0.5, COR_NEUTRA, 1)
 
 
 def desenhar_painel_superior(frame, total_cadastros):
