@@ -40,7 +40,7 @@ O projeto utiliza um padrão modular limpo (`src/utilitarios.py` e `src/reconhec
 * **Thread de Captura:** O OpenCV lê o hardware da câmera continuamente em background para esvaziar o buffer do Windows (`ThreadedCamera`).
 * **Auditoria Prévia:** Ao inicializar, o sistema localiza em lote, com o detector CNN, o rosto de cada foto de cadastro (`batch_face_locations`). A assinatura biométrica é gerada a partir do rosto encontrado; se o CNN não achar rosto numa foto, o sistema tenta o detector HOG antes de descartá-la.
 * **Pipeline de Detecção:** Detecção via HOG a cada 2 quadros. Quando há várias pessoas, só o rosto mais próximo da câmera (o maior) é verificado; os demais aparecem em cinza com o aviso "AGUARDE SUA VEZ". Antes do reconhecimento, o sistema confere se o rosto está de frente: recusa o rosto que o detector HOG encontrou com um dos seus filtros de perfil, o rosto inclinado ou virado (olhos desnivelados ou nariz fora do centro) e o rosto cortado na borda do quadro. Depois de qualquer uma dessas situações, espera 1 segundo com o rosto de frente antes de verificar. A busca de rostos usa o quadro reduzido a 1/4, mas a assinatura do rosto é calculada no quadro inteiro, para mais precisão. O HUD desenha a malha biométrica de 68 pontos.
-* **Histerese e Logs:** tolerância euclidiana de `0.58`. Para liberar, o sistema exige 2 leituras iguais seguidas; para negar, o "desconhecido" precisa se manter por 2 segundos, o que evita negações falsas enquanto a pessoa se mexe. Os acessos vão para `data/logs/acessos.csv`, seguindo as regras da seção "Regras do Registro".
+* **Histerese e Logs:** tolerância euclidiana de `0.50`. Para liberar, o sistema exige 2 leituras iguais seguidas; para negar, o "desconhecido" precisa se manter por 2 segundos, o que evita negações falsas enquanto a pessoa se mexe. Os acessos vão para `data/logs/acessos.csv`, seguindo as regras da seção "Regras do Registro".
 
 ### Como os dados andam
 
@@ -56,7 +56,7 @@ flowchart LR
         F --> G{"Rosto de frente?<br/>face_landmarks small"}
         G -->|não| H["OLHE PARA A CAMERA"]
         G -->|sim| I["face_encodings no quadro inteiro<br/>em outra thread"]
-        I --> J["face_distance +<br/>compare_faces (0.58)"]
+        I --> J["face_distance +<br/>compare_faces (0.50)"]
         J --> K{"2 leituras iguais?"}
         K -->|sim| L["Tela com malha (face_landmarks large)<br/>e som"]
         K -->|sim| M{"Fora da carência?"}
@@ -96,7 +96,7 @@ O VisionGuard usa a biblioteca em dois módulos (`src/utilitarios.py` e `src/rec
 | **5** | `face_landmarks(model="small")` | `src/reconhecedor.py` | Modelo de 5 pontos: confere se os olhos estão nivelados e o nariz centralizado, e recusa rostos inclinados ou de perfil antes do reconhecimento. |
 | **6** | `face_landmarks(model="large")` | `src/reconhecedor.py` | Modelo de 68 pontos: desenha a malha biométrica no HUD. |
 | **7** | `face_distance` | `src/reconhecedor.py` | Calcula a distância entre o rosto da câmera e cada rosto cadastrado; a menor distância indica o candidato e gera o percentual exibido. |
-| **8** | `compare_faces(tolerance=0.58)` | `src/reconhecedor.py` | Decide se o candidato está dentro da tolerância de 0.58 para ser autorizado. |
+| **8** | `compare_faces(tolerance=0.50)` | `src/reconhecedor.py` | Decide se o candidato está dentro da tolerância de 0.50 para ser autorizado. |
 
 ---
 
@@ -139,7 +139,7 @@ Não é preciso instalar compilador C++ nem CMake: o projeto usa o `dlib-bin`, q
      python main.py
      ```
    * Para encerrar, pressione `q` ou feche a janela.
-   * Para medir a tolerância de reconhecimento, inicie com `python main.py --calibrar`: a distância de cada leitura aparece no terminal (0 = rosto idêntico; quanto maior, mais diferente; abaixo de `0.58`, o acesso é liberado).
+   * Para medir a tolerância de reconhecimento, inicie com `python main.py --calibrar`: a distância de cada leitura aparece no terminal (0 = rosto idêntico; quanto maior, mais diferente; abaixo de `0.50`, o acesso é liberado).
 
 ## Como usar
 

@@ -77,9 +77,12 @@ class ThreadedCamera:
             self.cap.release()
 
 
+LIMIAR_RECONHECIMENTO = 0.50
+
+
 class ReconhecedorAssincrono:
     """Gerencia a inferência biométrica com amortecimento temporal (histerese) e limiar calibrado."""
-    def __init__(self, encodings_conhecidos, nomes_conhecidos, limiar=0.58, calibrar=False):
+    def __init__(self, encodings_conhecidos, nomes_conhecidos, limiar=LIMIAR_RECONHECIMENTO, calibrar=False):
         self.encodings_conhecidos = encodings_conhecidos
         self.nomes_conhecidos = nomes_conhecidos
         self.limiar = limiar
@@ -123,7 +126,7 @@ class ReconhecedorAssincrono:
                     # RECURSO 7: face_recognition.face_distance
                     distancias = face_recognition.face_distance(self.encodings_conhecidos, encoding)
 
-                    # RECURSO 8: face_recognition.compare_faces calibrado em 0.58
+                    # RECURSO 8: face_recognition.compare_faces
                     correspondencias = face_recognition.compare_faces(
                         self.encodings_conhecidos, encoding, tolerance=self.limiar
                     )
@@ -232,8 +235,8 @@ def emitir_som(autorizado: bool):
     threading.Thread(target=_tocar, daemon=True).start()
 
 
-def calcular_confianca(distancia, limiar=0.58):
-    """Calibra a confiança percentual com base no limiar ótimo de 0.58."""
+def calcular_confianca(distancia, limiar=LIMIAR_RECONHECIMENTO):
+    """Calibra a confiança percentual com base no limiar de reconhecimento."""
     if distancia <= limiar:
         fator = (limiar - distancia) / limiar
         confianca = 78.0 + (fator * 20.0)
@@ -448,7 +451,7 @@ def iniciar_reconhecimento(encodings_conhecidos, nomes_conhecidos, calibrar=Fals
     print("Pressione 'q' na janela de monitoramento para encerrar.\n")
 
     reconhecedor = ReconhecedorAssincrono(
-        encodings_conhecidos, nomes_conhecidos, limiar=0.58, calibrar=calibrar
+        encodings_conhecidos, nomes_conhecidos, calibrar=calibrar
     )
 
     contador_quadros = 0

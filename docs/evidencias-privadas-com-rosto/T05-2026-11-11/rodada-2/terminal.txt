@@ -1,0 +1,840 @@
+(.venv) PS C:\Users\fifin\Desktop\python\sistema-seguranca-facial> python -u main.py --calibrar | Tee-Object -FilePath "$env:TEMP\VisionGuard-T05-rodada2.txt"
+============================================================
+   SISTEMA DE SEGURANÃA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 2 de 2 foto(s) com rosto detectado.
+[CADASTRO] Assinatura biomÚtrica registrada: Gabriel
+[CADASTRO] Assinatura biomÚtrica registrada: Leonardo
+[SUCESSO] 2 face(s) autorizada(s) carregada(s).
+[CALIBRAÃ├O] Modo calibraþÒo ligado: a distÔncia de cada leitura aparece no terminal.
+[INICIANDO] Abrindo captura da webcam...
+
+[C┬MERA] Webcam aberta pelo DirectShow.
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROSTO] filtro 0 | inclinaþÒo 0.14 | nariz para o lado 0.05 | altura do nariz 0.90
+[CALIBRAÃ├O] distÔncia 0.313 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.445 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[EVENTO] AUTORIZADO: Gabriel (80.2%, distÔncia 0.445)
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.02 | altura do nariz 0.95
+[CALIBRAÃ├O] distÔncia 0.386 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.333 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.03 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.260 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.226 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.195 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.209 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.03 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.186 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.173 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.02 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.178 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.197 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.01 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.179 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.185 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.06 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.184 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.200 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.206 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.201 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.85
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.04 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.03 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.262 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.323 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.08 | altura do nariz 0.76
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.03 | altura do nariz 0.82
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.00 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.196 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.195 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.200 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.03 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.226 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.242 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.07 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.05 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.378 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.325 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.83
+[CALIBRAÃ├O] distÔncia 0.212 atÚ Gabriel (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.76
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.17 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.07 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.12 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.11 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.15 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.06 | altura do nariz 0.77
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.11 | altura do nariz 0.79
+[ROSTO] filtro 3 | inclinaþÒo 0.23 | nariz para o lado 0.23 | altura do nariz 0.65
+[ROSTO] filtro 0 | inclinaþÒo 0.27 | nariz para o lado 0.27 | altura do nariz 1.02
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.02 | altura do nariz 0.61
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.61
+[CALIBRAÃ├O] distÔncia 0.583 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.63
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.587 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.68
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.575 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.570 atÚ Leonardo (fora da tolerÔncia 0.5)
+[EVENTO] NEGADO: DESCONHECIDO (45.1%, distÔncia 0.570)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.01 | altura do nariz 0.67
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.02 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.13 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.575 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.07 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.559 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.17 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.545 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.26 | altura do nariz 0.76
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.21 | altura do nariz 0.76
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.24 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.19 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.23 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.75
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.03 | altura do nariz 0.87
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.576 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.05 | altura do nariz 0.88
+[CALIBRAÃ├O] distÔncia 0.605 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.626 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.08 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.594 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.611 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.67
+[CALIBRAÃ├O] distÔncia 0.593 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.588 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.18 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.21 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.26 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.24 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.19 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.19 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.17 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.572 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.20 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.19 | altura do nariz 0.80
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.24 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.573 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.03 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.573 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.00 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.601 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.00 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.597 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.601 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.80
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.86
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.01 | altura do nariz 0.87
+[CALIBRAÃ├O] distÔncia 0.611 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.620 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.03 | altura do nariz 0.84
+[CALIBRAÃ├O] distÔncia 0.623 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.02 | nariz para o lado 0.01 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.610 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.606 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.86
+[CALIBRAÃ├O] distÔncia 0.627 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.579 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.05 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.587 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.05 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.03 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.580 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.580 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.573 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.569 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.553 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.631 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.25 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.19 | altura do nariz 0.75
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.15 | altura do nariz 0.72
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.09 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.13 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.13 | altura do nariz 0.79
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.13 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.620 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.13 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.614 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.19 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.13 | altura do nariz 0.76
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.605 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.04 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.614 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.620 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.612 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.614 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.09 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.606 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.04 | altura do nariz 0.74
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.23 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.17 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.05 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.595 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.65
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.02 | altura do nariz 0.67
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.02 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.589 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.601 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.594 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.02 | altura do nariz 0.68
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.599 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.02 | altura do nariz 0.67
+[CALIBRAÃ├O] distÔncia 0.579 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.563 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.554 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.568 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.566 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.65
+[CALIBRAÃ├O] distÔncia 0.594 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.583 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.580 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.586 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.573 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.600 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.09 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.596 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.593 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.01 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.602 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.13 | altura do nariz 0.90
+[CALIBRAÃ├O] distÔncia 0.595 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.593 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.15 | altura do nariz 0.86
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.599 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.11 | altura do nariz 0.88
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.85
+[CALIBRAÃ├O] distÔncia 0.596 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.89
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.561 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.01 | altura do nariz 0.84
+[CALIBRAÃ├O] distÔncia 0.575 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.586 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.04 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.605 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.588 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.571 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.568 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.588 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.573 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.01 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.587 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.01 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.567 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.593 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.14 | nariz para o lado 0.01 | altura do nariz 0.82
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.11 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.589 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.13 | altura do nariz 0.83
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.595 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.17 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.587 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.599 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.09 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.601 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.596 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.14 | altura do nariz 0.91
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.02 | nariz para o lado 0.05 | altura do nariz 0.89
+[ROSTO] filtro 0 | inclinaþÒo 0.02 | nariz para o lado 0.00 | altura do nariz 0.87
+[CALIBRAÃ├O] distÔncia 0.588 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.88
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.02 | nariz para o lado 0.01 | altura do nariz 0.89
+[CALIBRAÃ├O] distÔncia 0.605 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.05 | altura do nariz 0.86
+[CALIBRAÃ├O] distÔncia 0.618 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.610 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.587 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.08 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.595 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.05 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.611 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.08 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.586 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.583 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.11 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.581 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.13 | altura do nariz 0.86
+[CALIBRAÃ├O] distÔncia 0.611 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.600 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.08 | altura do nariz 0.86
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.08 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.611 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.08 | altura do nariz 0.83
+[CALIBRAÃ├O] distÔncia 0.594 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.596 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.03 | altura do nariz 0.84
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.83
+[CALIBRAÃ├O] distÔncia 0.571 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.591 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.12 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.577 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.585 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.11 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.567 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.553 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.13 | altura do nariz 0.66
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.13 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.552 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.19 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.613 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.19 | altura do nariz 0.74
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.18 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.15 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.576 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.579 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.15 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.567 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.08 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.575 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.575 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.09 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.566 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.580 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.09 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.579 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.564 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.08 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.574 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.581 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.15 | altura do nariz 0.85
+[CALIBRAÃ├O] distÔncia 0.565 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.569 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.584 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.568 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.05 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.554 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.01 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.565 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.604 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.13 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.605 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.609 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.18 | altura do nariz 0.80
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.06 | altura do nariz 0.82
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.09 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.04 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.583 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.595 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.01 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.576 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.579 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.03 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.578 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.562 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.559 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.58
+[CALIBRAÃ├O] distÔncia 0.532 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.601 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 3 | inclinaþÒo 0.26 | nariz para o lado 0.17 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.02 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.590 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.08 | nariz para o lado 0.02 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.592 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.591 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.04 | altura do nariz 0.87
+[CALIBRAÃ├O] distÔncia 0.638 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.652 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 4 | inclinaþÒo 0.42 | nariz para o lado 0.54 | altura do nariz 0.79
+[ROSTO] filtro 4 | inclinaþÒo 0.46 | nariz para o lado 0.62 | altura do nariz 0.77
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.11 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.02 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.582 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.02 | altura do nariz 0.64
+[CALIBRAÃ├O] distÔncia 0.567 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.639 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.598 atÚ Gabriel (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.635 atÚ Gabriel (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.04 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.616 atÚ Gabriel (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.616 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.614 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.17 | nariz para o lado 0.16 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.01 | altura do nariz 0.76
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.79
+[ROSTO] filtro 4 | inclinaþÒo 0.57 | nariz para o lado 0.26 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.08 | altura do nariz 0.79
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.00 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.482 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.04 | altura do nariz 0.71
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.05 | altura do nariz 0.78
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.10 | altura do nariz 0.82
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.05 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.518 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.526 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.02 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.535 atÚ Leonardo (fora da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.529 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.06 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.460 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.05 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.466 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[EVENTO] AUTORIZADO: Leonardo (79.4%, distÔncia 0.466)
+[CALIBRAÃ├O] distÔncia 0.458 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.07 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.434 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.00 | altura do nariz 0.79
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.79
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.07 | altura do nariz 0.76
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.09 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.438 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.424 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CAR╩NCIA] Leonardo jß registrado hß 11 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.455 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.484 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.457 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.09 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.469 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.458 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.12 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.462 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.449 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.71
+[CALIBRAÃ├O] distÔncia 0.464 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.12 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.444 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.450 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CAR╩NCIA] Leonardo jß registrado hß 23 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.14 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.429 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.452 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.12 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.443 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.483 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.15 | nariz para o lado 0.06 | altura do nariz 0.63
+[CALIBRAÃ├O] distÔncia 0.509 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.16 | nariz para o lado 0.11 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.400 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.06 | altura do nariz 0.91
+[CALIBRAÃ├O] distÔncia 0.568 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.19 | nariz para o lado 0.04 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.08 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.442 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.421 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CAR╩NCIA] Leonardo jß registrado hß 51 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.06 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.422 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.09 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.438 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.434 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CAR╩NCIA] Leonardo jß registrado hß 63 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinaþÒo 0.05 | nariz para o lado 0.09 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.414 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.422 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.06 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.14 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.483 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.480 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CAR╩NCIA] Leonardo jß registrado hß 69 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.389 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.374 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.09 | altura do nariz 0.50
+[CALIBRAÃ├O] distÔncia 0.467 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.477 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.09 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.453 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.495 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.05 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.478 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.463 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.03 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.451 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.443 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.441 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.435 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.07 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.452 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.466 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.10 | altura do nariz 0.65
+[CALIBRAÃ├O] distÔncia 0.470 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.10 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinaþÒo 0.16 | nariz para o lado 0.02 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.03 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.403 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.476 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.14 | nariz para o lado 0.02 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.466 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.452 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.02 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.392 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.441 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.15 | nariz para o lado 0.02 | altura do nariz 0.85
+[CALIBRAÃ├O] distÔncia 0.406 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.00 | altura do nariz 0.72
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.02 | altura do nariz 0.74
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.03 | altura do nariz 0.83
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.03 | altura do nariz 0.80
+[CALIBRAÃ├O] distÔncia 0.422 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.435 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.10 | altura do nariz 0.78
+[CALIBRAÃ├O] distÔncia 0.436 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.427 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.08 | altura do nariz 0.81
+[CALIBRAÃ├O] distÔncia 0.450 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.472 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.05 | altura do nariz 0.76
+[CALIBRAÃ├O] distÔncia 0.478 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.445 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.13 | nariz para o lado 0.17 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.07 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.00 | altura do nariz 0.68
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.06 | altura do nariz 0.69
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.15 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.10 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.12 | altura do nariz 0.69
+[CALIBRAÃ├O] distÔncia 0.456 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.11 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.11 | altura do nariz 0.69
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.11 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.10 | altura do nariz 0.63
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.13 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.466 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.459 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.08 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.402 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.448 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.11 | nariz para o lado 0.00 | altura do nariz 0.73
+[CALIBRAÃ├O] distÔncia 0.464 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.452 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 4 | inclinaþÒo 0.37 | nariz para o lado 0.40 | altura do nariz 0.68
+[ROSTO] filtro 3 | inclinaþÒo 0.41 | nariz para o lado 0.29 | altura do nariz 0.66
+[ROSTO] filtro 3 | inclinaþÒo 0.44 | nariz para o lado 0.25 | altura do nariz 0.69
+[ROSTO] filtro 1 (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.03 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.02 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.03 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.02 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.410 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.03 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinaþÒo 0.06 | nariz para o lado 0.02 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.02 | altura do nariz 0.73
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.05 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.03 | altura do nariz 0.73
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro None (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.07 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.00 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.421 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.06 | altura do nariz 0.72
+[CALIBRAÃ├O] distÔncia 0.406 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.390 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.04 | altura do nariz 0.70
+[CALIBRAÃ├O] distÔncia 0.384 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.410 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.12 | nariz para o lado 0.06 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.408 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.418 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.04 | altura do nariz 0.64
+[CALIBRAÃ├O] distÔncia 0.395 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.385 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.09 | nariz para o lado 0.02 | altura do nariz 0.74
+[CALIBRAÃ├O] distÔncia 0.400 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.395 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.00 | altura do nariz 0.77
+[CALIBRAÃ├O] distÔncia 0.392 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.441 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.10 | nariz para o lado 0.10 | altura do nariz 0.75
+[CALIBRAÃ├O] distÔncia 0.499 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.486 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.03 | nariz para o lado 0.03 | altura do nariz 0.82
+[CALIBRAÃ├O] distÔncia 0.463 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[CALIBRAÃ├O] distÔncia 0.518 atÚ Leonardo (fora da tolerÔncia 0.5)
+[ROSTO] filtro 2 (perfil ou nÒo encontrado)
+[ROSTO] filtro 0 | inclinaþÒo 0.00 | nariz para o lado 0.02 | altura do nariz 0.69
+[ROSTO] filtro 0 | inclinaþÒo 0.04 | nariz para o lado 0.00 | altura do nariz 0.84
+[CALIBRAÃ├O] distÔncia 0.432 atÚ Leonardo (dentro da tolerÔncia 0.5)
+[ROSTO] filtro 0 | inclinaþÒo 0.07 | nariz para o lado 0.05 | altura do nariz 0.79
+[CALIBRAÃ├O] distÔncia 0.422 atÚ Leonardo (dentro da tolerÔncia 0.5)

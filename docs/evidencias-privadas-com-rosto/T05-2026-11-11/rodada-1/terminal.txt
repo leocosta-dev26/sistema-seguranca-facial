@@ -1,0 +1,342 @@
+(.venv) PS C:\Users\fifin\Desktop\python\sistema-seguranca-facial> python main.py --calibrar
+============================================================
+   SISTEMA DE SEGURANÇA E RECONHECIMENTO FACIAL - MVP
+   Engenharia de Software - UniAnchieta
+============================================================
+
+[INICIANDO] Carregando cadastros da base de dados...
+[AUDITORIA] 2 de 2 foto(s) com rosto detectado.
+[CADASTRO] Assinatura biométrica registrada: Gabriel
+[CADASTRO] Assinatura biométrica registrada: Leonardo
+[SUCESSO] 2 face(s) autorizada(s) carregada(s).
+[CALIBRAÇÃO] Modo calibração ligado: a distância de cada leitura aparece no terminal.
+[INICIANDO] Abrindo captura da webcam...
+
+[CÂMERA] Webcam aberta pelo DirectShow.
+
+[VISIONGUARD ATIVO] Monitoramento em tempo real iniciado.
+Pressione 'q' na janela de monitoramento para encerrar.
+
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.01 | altura do nariz 0.73
+[CALIBRAÇÃO] distância 0.523 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.442 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.02 | altura do nariz 0.73
+[CALIBRAÇÃO] distância 0.420 até Leonardo (dentro da tolerância 0.5)
+[EVENTO] AUTORIZADO: Leonardo (81.2%, distância 0.420)
+[CALIBRAÇÃO] distância 0.433 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.06 | altura do nariz 0.79
+[CALIBRAÇÃO] distância 0.434 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.427 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.10 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.436 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.433 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.04 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.447 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.440 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.13 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.453 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.437 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.05 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.429 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.03 | altura do nariz 0.85
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.07 | altura do nariz 0.84
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.09 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.08 | altura do nariz 0.75
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.03 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.449 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.03 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.459 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.475 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.14 | altura do nariz 0.79
+[CALIBRAÇÃO] distância 0.475 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.03 | altura do nariz 0.79
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.04 | altura do nariz 0.83
+[CALIBRAÇÃO] distância 0.433 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.06 | altura do nariz 0.79
+[CALIBRAÇÃO] distância 0.431 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.454 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.05 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.417 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.423 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.06 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.423 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.432 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.00 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.420 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.436 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.411 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.78
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.06 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.399 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.03 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.392 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.445 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.01 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.483 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.443 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.05 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.441 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.447 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.05 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.426 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.434 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.00 | altura do nariz 0.78
+[CALIBRAÇÃO] distância 0.420 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.441 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.06 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.420 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.425 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.12 | altura do nariz 0.69
+[CALIBRAÇÃO] distância 0.437 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.457 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.07 | altura do nariz 0.80
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.03 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.03 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.402 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.00 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.401 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.403 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.01 | altura do nariz 0.81
+[CALIBRAÇÃO] distância 0.395 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.414 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.08 | altura do nariz 0.83
+[CALIBRAÇÃO] distância 0.406 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.433 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.09 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.422 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.438 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.08 | altura do nariz 0.79
+[CALIBRAÇÃO] distância 0.445 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.485 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.03 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.474 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.511 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.06 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.447 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.457 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.15 | nariz para o lado 0.08 | altura do nariz 0.77
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.06 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.435 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.02 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.434 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.489 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.06 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.495 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.14 | nariz para o lado 0.01 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinação 0.02 | nariz para o lado 0.10 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.08 | altura do nariz 0.64
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.02 | nariz para o lado 0.12 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.446 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.10 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.420 até Leonardo (dentro da tolerância 0.5)
+[CARÊNCIA] Leonardo já registrado há 53 s; sem novo registro no log.
+[CALIBRAÇÃO] distância 0.453 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.04 | nariz para o lado 0.10 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.391 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.436 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.10 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.03 | altura do nariz 0.76
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.04 | altura do nariz 0.70
+[CALIBRAÇÃO] distância 0.469 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.00 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.459 até Leonardo (dentro da tolerância 0.5)
+[CARÊNCIA] Leonardo já registrado há 60 s; sem novo registro no log.
+[CALIBRAÇÃO] distância 0.488 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.05 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.463 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.02 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.04 | altura do nariz 0.78
+[CALIBRAÇÃO] distância 0.377 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.07 | altura do nariz 0.78
+[CALIBRAÇÃO] distância 0.435 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.429 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.02 | nariz para o lado 0.01 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.444 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.421 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.08 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.425 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.406 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.527 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.00 | altura do nariz 0.69
+[ROSTO] filtro 0 | inclinação 0.19 | nariz para o lado 0.12 | altura do nariz 0.80
+[CALIBRAÇÃO] distância 0.437 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.14 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.390 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.03 | altura do nariz 0.76
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.07 | altura do nariz 0.73
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.78
+[CALIBRAÇÃO] distância 0.422 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.01 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.07 | altura do nariz 0.74
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.11 | altura do nariz 0.71
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.06 | altura do nariz 0.80
+[CALIBRAÇÃO] distância 0.382 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.363 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.08 | nariz para o lado 0.03 | altura do nariz 0.75
+[CALIBRAÇÃO] distância 0.408 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.432 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.09 | altura do nariz 0.83
+[CALIBRAÇÃO] distância 0.597 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.03 | altura do nariz 0.79
+[ROSTO] filtro 0 | inclinação 0.17 | nariz para o lado 0.13 | altura do nariz 0.91
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.07 | altura do nariz 0.81
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.07 | altura do nariz 0.89
+[ROSTO] filtro 0 | inclinação 0.23 | nariz para o lado 0.18 | altura do nariz 0.82
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.08 | altura do nariz 0.76
+[CALIBRAÇÃO] distância 0.490 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.498 até Leonardo (dentro da tolerância 0.5)
+[CARÊNCIA] Leonardo já registrado há 103 s; sem novo registro no log.
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.07 | altura do nariz 0.87
+[CALIBRAÇÃO] distância 0.479 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.448 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.79
+[CALIBRAÇÃO] distância 0.450 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.459 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.05 | nariz para o lado 0.04 | altura do nariz 0.78
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.09 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.401 até Leonardo (dentro da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.396 até Leonardo (dentro da tolerância 0.5)
+[ROSTO] filtro None (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.06 | altura do nariz 0.69
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.06 | altura do nariz 0.69
+[CALIBRAÇÃO] distância 0.691 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.18 | altura do nariz 0.73
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.05 | altura do nariz 0.68
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.09 | altura do nariz 0.66
+[CALIBRAÇÃO] distância 0.619 até Leonardo (fora da tolerância 0.5)
+[EVENTO] NEGADO: DESCONHECIDO (41.7%, distância 0.619)
+[ROSTO] filtro 0 | inclinação 0.03 | nariz para o lado 0.06 | altura do nariz 0.67
+[CALIBRAÇÃO] distância 0.597 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.582 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.05 | altura do nariz 0.68
+[CALIBRAÇÃO] distância 0.610 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.605 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.17 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.596 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.18 | altura do nariz 0.68
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.07 | nariz para o lado 0.22 | altura do nariz 0.72
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.18 | altura do nariz 0.66
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.10 | altura do nariz 0.68
+[CALIBRAÇÃO] distância 0.613 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.10 | nariz para o lado 0.05 | altura do nariz 0.73
+[CALIBRAÇÃO] distância 0.615 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.597 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.16 | nariz para o lado 0.02 | altura do nariz 0.66
+[CALIBRAÇÃO] distância 0.562 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.570 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.19 | nariz para o lado 0.05 | altura do nariz 0.77
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.02 | altura do nariz 0.58
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.03 | altura do nariz 0.66
+[CALIBRAÇÃO] distância 0.591 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.584 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.32 | nariz para o lado 0.14 | altura do nariz 0.91
+[ROSTO] filtro 3 | inclinação 0.32 | nariz para o lado 0.21 | altura do nariz 0.55
+[ROSTO] filtro 0 | inclinação 0.20 | nariz para o lado 0.07 | altura do nariz 0.60
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 1 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 2 (perfil ou não encontrado)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.01 | altura do nariz 0.70
+[ROSTO] filtro 0 | inclinação 0.15 | nariz para o lado 0.02 | altura do nariz 0.71
+[CALIBRAÇÃO] distância 0.623 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.627 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.12 | nariz para o lado 0.00 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.611 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.605 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.21 | nariz para o lado 0.00 | altura do nariz 0.72
+[CALIBRAÇÃO] distância 0.579 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.569 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.19 | nariz para o lado 0.03 | altura do nariz 0.68
+[CALIBRAÇÃO] distância 0.585 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.584 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.20 | nariz para o lado 0.04 | altura do nariz 0.70
+[CALIBRAÇÃO] distância 0.578 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.586 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.14 | nariz para o lado 0.04 | altura do nariz 0.73
+[CALIBRAÇÃO] distância 0.578 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.584 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.11 | nariz para o lado 0.04 | altura do nariz 0.66
+[CALIBRAÇÃO] distância 0.568 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.530 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.02 | altura do nariz 0.52
+[CALIBRAÇÃO] distância 0.575 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.575 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.03 | altura do nariz 0.60
+[CALIBRAÇÃO] distância 0.568 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.576 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.02 | altura do nariz 0.61
+[CALIBRAÇÃO] distância 0.580 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.572 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.02 | altura do nariz 0.65
+[CALIBRAÇÃO] distância 0.577 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.580 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.02 | altura do nariz 0.65
+[CALIBRAÇÃO] distância 0.589 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.583 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.00 | nariz para o lado 0.09 | altura do nariz 0.62
+[CALIBRAÇÃO] distância 0.590 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.609 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.06 | nariz para o lado 0.05 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.607 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.602 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.03 | altura do nariz 0.70
+[CALIBRAÇÃO] distância 0.602 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.583 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.12 | nariz para o lado 0.00 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.597 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.598 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.02 | altura do nariz 0.77
+[CALIBRAÇÃO] distância 0.603 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.592 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.12 | nariz para o lado 0.00 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.600 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.596 até Leonardo (fora da tolerância 0.5)
+[ROSTO] filtro 0 | inclinação 0.09 | nariz para o lado 0.02 | altura do nariz 0.74
+[CALIBRAÇÃO] distância 0.579 até Leonardo (fora da tolerância 0.5)
+[CALIBRAÇÃO] distância 0.580 até Leonardo (fora da tolerância 0.5)
+(.venv) PS C:\Users\fifin\Desktop\python\sistema-seguranca-facial>
